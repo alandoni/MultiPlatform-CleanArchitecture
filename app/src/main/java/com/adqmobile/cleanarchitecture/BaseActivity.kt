@@ -10,7 +10,7 @@ abstract class BaseActivity<U: IBaseActivity, T: BasePresenter<U>> : AppCompatAc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        this.presenter.attach(this as U)
         this.presenter.onCreate(savedInstanceState)
     }
 }

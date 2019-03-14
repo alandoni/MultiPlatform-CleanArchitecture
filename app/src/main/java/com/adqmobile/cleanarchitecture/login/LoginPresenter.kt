@@ -3,14 +3,16 @@ package com.adqmobile.cleanarchitecture.login
 import android.os.Bundle
 import com.adqmobile.cleanarchitecture.BasePresenter
 import com.adqmobile.cleanarchitecture.task.CallBack
-import com.adqmobile.cleanarchitecture.task.LoginTask
+import com.adqmobile.cleanarchitecture.task.Task
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
+import com.adqmobile.domain.usecases.LoginUseCase
 import javax.inject.Inject
 
 class LoginPresenter @Inject constructor() : BasePresenter<ILoginActivity>, CallBack<LoginResponseEntity> {
 
     private lateinit var view: ILoginActivity
+    @Inject lateinit var loginUseCase: LoginUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
     }
@@ -29,7 +31,7 @@ class LoginPresenter @Inject constructor() : BasePresenter<ILoginActivity>, Call
         // perform the user login attempt.
         view.showProgress()
         val loginRequest = LoginRequestEntity(view.getEmail(), view.getPassword())
-        LoginTask(this).execute(loginRequest)
+        Task(loginUseCase, this).execute(loginRequest)
     }
 
     override fun onFinish(result: LoginResponseEntity?) {

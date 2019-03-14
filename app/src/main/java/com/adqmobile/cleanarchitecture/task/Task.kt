@@ -5,17 +5,18 @@ import com.adqmobile.domain.entities.IEntity
 import com.adqmobile.domain.usecases.UseCase
 import java.lang.Exception
 import java.lang.RuntimeException
-import javax.inject.Inject
 
-open class Task<T: UseCase<U, V>, U, V: IEntity>(private val callBack: CallBack<V>): AsyncTask<U, Unit, V?>() {
+open class Task<U: IEntity, V: IEntity>(
+    private val useCase: UseCase<U, V>,
+    private val callBack: CallBack<V>
+): AsyncTask<U, Unit, V?>() {
 
-    @Inject protected lateinit var useCase : T
     private lateinit var error : Exception
 
     override fun doInBackground(vararg params: U) : V? {
         return try {
             this.useCase.execute(params[0])
-        } catch (e : RuntimeException) {
+        } catch (e : Exception) {
             e.printStackTrace()
             error = e
             null

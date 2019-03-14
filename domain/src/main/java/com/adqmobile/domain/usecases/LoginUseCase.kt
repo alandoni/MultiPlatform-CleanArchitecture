@@ -2,7 +2,7 @@ package com.adqmobile.domain.usecases
 
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
-import com.adqmobile.domain.repositories.UserRepository
+import com.adqmobile.domain.repositories.user.UserRepository
 import java.lang.RuntimeException
 import javax.inject.Inject
 

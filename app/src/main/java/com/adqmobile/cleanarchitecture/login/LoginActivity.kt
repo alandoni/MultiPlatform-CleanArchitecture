@@ -27,7 +27,6 @@ class LoginActivity : BaseActivity<ILoginActivity, LoginPresenter>(), ILoginActi
         setContentView(R.layout.activity_login)
 
         DaggerLoginComponent.create().inject(this)
-        presenter.attach(this)
 
         // Set up the login form.
         password.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
