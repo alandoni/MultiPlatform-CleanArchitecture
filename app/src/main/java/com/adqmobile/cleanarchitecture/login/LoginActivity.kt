@@ -11,6 +11,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.adqmobile.cleanarchitecture.BaseActivity
+import com.adqmobile.cleanarchitecture.BaseApp
 
 import com.adqmobile.cleanarchitecture.R
 import kotlinx.android.synthetic.main.activity_login.*
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 /**
  * A login screen that offers login via email/password.
  */
-class LoginActivity : BaseActivity<ILoginActivity, LoginPresenter>(), ILoginActivity {
+class LoginActivity : BaseActivity<LoginPresenter>(), ILoginActivity {
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -26,7 +27,7 @@ class LoginActivity : BaseActivity<ILoginActivity, LoginPresenter>(), ILoginActi
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_login)
 
-        DaggerLoginComponent.create().inject(this)
+        BaseApp.appComponent.inject(this)
 
         // Set up the login form.
         password.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->

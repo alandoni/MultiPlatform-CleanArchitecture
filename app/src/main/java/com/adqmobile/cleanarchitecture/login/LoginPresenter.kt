@@ -9,7 +9,7 @@ import com.adqmobile.domain.entities.LoginResponseEntity
 import com.adqmobile.domain.usecases.LoginUseCase
 import javax.inject.Inject
 
-class LoginPresenter @Inject constructor() : BasePresenter<ILoginActivity>, CallBack<LoginResponseEntity> {
+class LoginPresenter @Inject constructor() : BasePresenter, CallBack<LoginResponseEntity> {
 
     private lateinit var view: ILoginActivity
     @Inject lateinit var loginUseCase: LoginUseCase
@@ -17,8 +17,8 @@ class LoginPresenter @Inject constructor() : BasePresenter<ILoginActivity>, Call
     override fun onCreate(savedInstanceState: Bundle?) {
     }
 
-    override fun attach(view: ILoginActivity) {
-        this.view = view
+    override fun attach(view: Any) {
+        this.view = view as ILoginActivity
     }
 
     /**
