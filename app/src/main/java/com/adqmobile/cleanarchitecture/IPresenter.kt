@@ -2,7 +2,7 @@ package com.adqmobile.cleanarchitecture
 
 import android.os.Bundle
 
-interface BasePresenter {
+interface IPresenter {
     fun onCreate(savedInstanceState : Bundle?)
-    fun attach(view: Any)
+    fun attach(view: IBaseActivity)
 }

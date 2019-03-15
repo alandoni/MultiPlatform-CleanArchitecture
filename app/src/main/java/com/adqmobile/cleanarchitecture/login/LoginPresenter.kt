@@ -1,7 +1,8 @@
 package com.adqmobile.cleanarchitecture.login
 
 import android.os.Bundle
-import com.adqmobile.cleanarchitecture.BasePresenter
+import com.adqmobile.cleanarchitecture.IBaseActivity
+import com.adqmobile.cleanarchitecture.IPresenter
 import com.adqmobile.cleanarchitecture.task.CallBack
 import com.adqmobile.cleanarchitecture.task.Task
 import com.adqmobile.domain.entities.LoginRequestEntity
@@ -9,7 +10,7 @@ import com.adqmobile.domain.entities.LoginResponseEntity
 import com.adqmobile.domain.usecases.LoginUseCase
 import javax.inject.Inject
 
-class LoginPresenter @Inject constructor() : BasePresenter, CallBack<LoginResponseEntity> {
+class LoginPresenter @Inject constructor() : IPresenter, CallBack<LoginResponseEntity> {
 
     private lateinit var view: ILoginActivity
     @Inject lateinit var loginUseCase: LoginUseCase
@@ -17,7 +18,7 @@ class LoginPresenter @Inject constructor() : BasePresenter, CallBack<LoginRespon
     override fun onCreate(savedInstanceState: Bundle?) {
     }
 
-    override fun attach(view: Any) {
+    override fun attach(view: IBaseActivity) {
         this.view = view as ILoginActivity
     }
 

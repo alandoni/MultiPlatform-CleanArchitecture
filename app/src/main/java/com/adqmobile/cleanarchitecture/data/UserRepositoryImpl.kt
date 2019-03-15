@@ -19,24 +19,29 @@ import javax.inject.Inject
 class UserRepositoryImpl @Inject constructor(val context: Context) : UserRepository {
 
     override fun getByEmail(email: String): UserEntity? {
+
         val loginRequestEntity = LoginRequestEntity(email, "")
-        var api = GetUserApi(loginRequestEntity)
+        val api = GetUserApi(loginRequestEntity)
         var userEntity = Request<LoginRequestEntity, UserEntity>(context).request(api, UserEntity::class.java)
-        var cursor : Cursor? = null
 
         return if (userEntity != null) {
             val db = DatabaseHandler(context)
-            val insertQuery = UserInfoBD().insert()
 
             db.writableDatabase.execSQL(
-                insertQuery,
-                arrayOf(userEntity!!.name, userEntity!!.email, userEntity!!.password)
+                UserInfoBD().insert(),
+                arrayOf(userEntity.name, userEntity.email, userEntity.password)
             )
-            cursor = db.readableDatabase.rawQuery("select last_insert_rowid()", null)
-            cursor!!.moveToNext()
 
-            val selectQuery = UserInfoBD().selectByID()
-            val cursor = db.readableDatabase.rawQuery(selectQuery, arrayOf(cursor!!.getLong(0).toString()))
+            val cursorInsert = db.readableDatabase.rawQuery("select last_insert_rowid()", null)
+            cursorInsert!!.moveToNext()
+            val id = cursorInsert.getLong(0)
+            cursorInsert.close()
+
+            val cursor = db.readableDatabase.rawQuery(
+                UserInfoBD().selectByID(),
+                arrayOf(id.toString())
+            )
+
             cursor.moveToFirst()
             userEntity = UserEntity(
                 cursor.getString(cursor.getColumnIndex("name")),

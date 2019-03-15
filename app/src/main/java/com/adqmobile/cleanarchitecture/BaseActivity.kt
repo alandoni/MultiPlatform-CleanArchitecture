@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.adqmobile.cleanarchitecture.login.LoginActivity
 import javax.inject.Inject
 
-abstract class BaseActivity<T: BasePresenter> : AppCompatActivity(), IBaseActivity {
+abstract class BaseActivity<T: IPresenter> : AppCompatActivity(), IBaseActivity {
 
     @Inject protected lateinit var presenter : T
 
