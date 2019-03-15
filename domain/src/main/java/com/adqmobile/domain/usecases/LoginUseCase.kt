@@ -33,10 +33,10 @@ class LoginUseCase @Inject constructor(private val repository: UserRepository) :
             throw RuntimeException("Invalid email")
         }
 
-        var entity = repository.getByEmail(params.email!!)
+        val entity = repository.getByEmail(params.email!!)
         return if (entity != null) {
             if (entity.password == params.password) {
-                LoginResponseEntity(true, null)
+                LoginResponseEntity(true, entity.toString())
             } else {
                 LoginResponseEntity(true, "Invalid password")
             }

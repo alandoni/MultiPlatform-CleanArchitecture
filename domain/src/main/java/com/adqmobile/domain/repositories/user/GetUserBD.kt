@@ -14,14 +14,14 @@ class UserInfoBD {
     }
 
     fun insert() : String {
-        return "INSERT INTO `users` (name, email, password) VALUES (?, ?, ?)"
+        return "INSERT INTO `users` (name, email, password) VALUES (?, ?, ?);"
     }
 
     fun selectByID() : String {
-        return "SELECT * FROM `users` WHERE `users`.`id` = ?"
+        return "SELECT * FROM `users` WHERE `users`.`id` = ?;"
     }
 
     fun delete() : String {
-        return "DELETE FROM `users` WHERE `users`.`id` = ?"
+        return "DELETE FROM `users` WHERE `users`.`id` = ?;"
     }
 }

@@ -36,6 +36,7 @@ class LoginPresenter @Inject constructor() : BasePresenter, CallBack<LoginRespon
 
     override fun onFinish(result: LoginResponseEntity?) {
         view.hideProgress()
+        view.onFail(result!!.error)
         view.onSuccess()
     }
 

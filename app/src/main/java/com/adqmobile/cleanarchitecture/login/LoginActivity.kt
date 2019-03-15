@@ -95,7 +95,7 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginActivity {
     }
 
     override fun onSuccess() {
-        this.error.visibility = View.GONE
+        this.error.visibility = View.VISIBLE
     }
 
     override fun showProgress() {

@@ -4,8 +4,11 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.database.sqlite.SQLiteStatement
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.database.sqlite.transaction
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.UserEntity
 import com.adqmobile.domain.repositories.user.GetUserApi
@@ -18,17 +21,10 @@ class UserRepositoryImpl @Inject constructor(val context: Context) : UserReposit
     override fun getByEmail(email: String): UserEntity? {
         val loginRequestEntity = LoginRequestEntity(email, "")
         var api = GetUserApi(loginRequestEntity)
-        //val userEntity = Request<LoginRequestEntity, UserEntity>().request(api, UserEntity::class.java)
-        val userEntity = UserEntity("Alan", "alan.etm@gmail.com", "123")
+        var userEntity = Request<LoginRequestEntity, UserEntity>(context).request(api, UserEntity::class.java)
+        var cursor : Cursor? = null
 
         return if (userEntity != null) {
-            if (ContextCompat.checkSelfPermission(context.applicationContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(context as Activity,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    null
-                }
-            }
-
             val db = DatabaseHandler(context)
             val insertQuery = UserInfoBD().insert()
 
@@ -36,10 +32,18 @@ class UserRepositoryImpl @Inject constructor(val context: Context) : UserReposit
                 insertQuery,
                 arrayOf(userEntity!!.name, userEntity!!.email, userEntity!!.password)
             )
+            cursor = db.readableDatabase.rawQuery("select last_insert_rowid()", null)
+            cursor!!.moveToNext()
 
-            val selectQuery = UserInfoBD().selectAll()
-            val cursor = db.readableDatabase.rawQuery(selectQuery, arrayOf())
-
+            val selectQuery = UserInfoBD().selectByID()
+            val cursor = db.readableDatabase.rawQuery(selectQuery, arrayOf(cursor!!.getLong(0).toString()))
+            cursor.moveToFirst()
+            userEntity = UserEntity(
+                cursor.getString(cursor.getColumnIndex("name")),
+                cursor.getString(cursor.getColumnIndex("email")),
+                cursor.getString(cursor.getColumnIndex("password"))
+            )
+            cursor.close()
             userEntity
         } else {
             null
