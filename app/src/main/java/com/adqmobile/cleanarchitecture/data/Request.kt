@@ -20,7 +20,7 @@ class Request<U: IEntity, V: IEntity> {
         try {
             val url = URL(URL("http://localhost:3000"), api.getUrl())
             urlConnection = url.openConnection() as HttpURLConnection
-            urlConnection!!.requestMethod = api.getMethod().toString()
+            urlConnection.requestMethod = api.getMethod().toString()
             if (api.getHeaders() != null) {
                 urlConnection.headerFields.putAll(api.getHeaders()!!)
             }

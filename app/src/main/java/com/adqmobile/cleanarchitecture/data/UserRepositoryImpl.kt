@@ -22,8 +22,6 @@ class UserRepositoryImpl @Inject constructor(val context: Context) : UserReposit
         val userEntity = UserEntity("Alan", "alan.etm@gmail.com", "123")
 
         return if (userEntity != null) {
-            val insertQuery = UserInfoBD().insert()
-
             if (ContextCompat.checkSelfPermission(context.applicationContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 if (!ActivityCompat.shouldShowRequestPermissionRationale(context as Activity,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -32,13 +30,15 @@ class UserRepositoryImpl @Inject constructor(val context: Context) : UserReposit
             }
 
             val db = DatabaseHandler(context)
-            val insertCursor = db.writableDatabase.rawQuery(
+            val insertQuery = UserInfoBD().insert()
+
+            db.writableDatabase.execSQL(
                 insertQuery,
                 arrayOf(userEntity!!.name, userEntity!!.email, userEntity!!.password)
             )
 
-            val selectQuery = UserInfoBD().selectByID()
-            val cursor = db.readableDatabase.rawQuery(selectQuery, arrayOf(insertCursor.getString(0)))
+            val selectQuery = UserInfoBD().selectAll()
+            val cursor = db.readableDatabase.rawQuery(selectQuery, arrayOf())
 
             userEntity
         } else {

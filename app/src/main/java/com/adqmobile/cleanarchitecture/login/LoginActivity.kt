@@ -5,16 +5,13 @@ import android.animation.AnimatorListenerAdapter
 import android.annotation.TargetApi
 import android.os.Build
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.adqmobile.cleanarchitecture.BaseActivity
-import com.adqmobile.cleanarchitecture.BaseApp
-
 import com.adqmobile.cleanarchitecture.R
 import kotlinx.android.synthetic.main.activity_login.*
+
 
 /**
  * A login screen that offers login via email/password.
@@ -25,9 +22,8 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginActivity {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        BaseApp.appComponent.inject(this)
 
         // Set up the login form.
         password.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
@@ -41,8 +37,6 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginActivity {
         signInButton.setOnClickListener {
             this.presenter.attemptLogin()
         }
-
-        super.onCreate(savedInstanceState)
     }
 
     /**

@@ -3,10 +3,10 @@ package com.adqmobile.domain.repositories.user
 class UserInfoBD {
     fun createTable() : String {
         return "CREATE TABLE `users` (" +
-                "id INTEGER PRIMARY KEY," +
-                "name TEXT," +
-                "email TEXT," +
-                "password TEXT);"
+                "`id` INTEGER PRIMARY KEY," +
+                "`name` TEXT," +
+                "`email` TEXT," +
+                "`password` TEXT);"
     }
 
     fun selectAll() : String {
@@ -18,10 +18,10 @@ class UserInfoBD {
     }
 
     fun selectByID() : String {
-        return "SELECT * FROM `users` WHERE `users.id` = ?"
+        return "SELECT * FROM `users` WHERE `users`.`id` = ?"
     }
 
     fun delete() : String {
-        return "DELETE FROM `users` WHERE `users.id` = ?"
+        return "DELETE FROM `users` WHERE `users`.`id` = ?"
     }
 }
