@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class BasePresenter {
+    
+    required init() { }
+    
+    func attach(view: BaseViewControllerProtocol) { }
+}

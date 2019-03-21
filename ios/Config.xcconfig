@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  CleanArchitecture
+//
+//  Created by Alan Donizete Quintiliano on 21/03/19.
+//  Copyright © 2019 Alan Quintiliano. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+FRAMEWORK_SEARCH_PATHS = $(inherited) $SRCROOT/../domain/build/xcode-frameworks

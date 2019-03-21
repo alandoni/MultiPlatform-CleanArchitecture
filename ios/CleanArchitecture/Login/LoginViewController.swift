@@ -26,7 +26,7 @@ class LoginViewController: BaseViewController<LoginPresenter>, LoginViewControll
     }
 
     @IBAction func didTouchLogin(_ sender: Any) {
-        presenter!.attemptLogin()
+        presenter.attemptLogin()
     }
     
     func getEmail() -> String {

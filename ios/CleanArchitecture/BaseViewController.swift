@@ -8,6 +8,11 @@
 
 import UIKit
 
-class BaseViewController: NSObject {
-
+class BaseViewController<T: BasePresenter>: UIViewController {
+    var presenter: T;
+    
+    required init?(coder aDecoder: NSCoder) {
+        presenter = T();
+        super.init(coder: aDecoder);
+    }
 }

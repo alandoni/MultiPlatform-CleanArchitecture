@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import main
 
-class LoginPresenter: PresenterProtocol {
+class LoginPresenter: BasePresenter {
     var view: LoginViewControllerProtocol?
     
-    init() {
+    required init() {
         
     }
     
-    func attach(view: BaseViewControllerProtocol) {
+    override func attach(view: BaseViewControllerProtocol) {
         self.view = view as? LoginViewControllerProtocol
     }
     
@@ -26,6 +27,9 @@ class LoginPresenter: PresenterProtocol {
     func attemptLogin() {
         let email = self.view?.getEmail()
         let password = self.view?.getPassword()
+
+        let loginRequest = LoginRequestEntity(email: email, password: password)
+        LoginUseCase.init(repository: <#T##UserRepository#>).execute(params: loginRequest)
     }
     
     func onFinish(result: Any?) { //LoginResponseEntity?) {
