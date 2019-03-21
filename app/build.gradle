@@ -35,7 +35,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
-    implementation project(path: ':domain')
+    implementation project(':domain')
     implementation 'com.google.dagger:dagger:2.21'
     kapt 'com.google.dagger:dagger-compiler:2.21'
     kaptTest 'com.google.dagger:dagger-compiler:2.21'

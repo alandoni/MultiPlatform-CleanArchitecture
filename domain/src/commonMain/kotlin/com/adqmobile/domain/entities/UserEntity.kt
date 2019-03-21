@@ -7,6 +7,6 @@ data class UserEntity(
 ) : IEntity {
 
     override fun toString(): String {
-        return String.format("{name: %s, email: %s, password: %s}", name, email, password)
+        return "{name: ".plus(name).plus(", email: ").plus(email).plus(", password: ").plus(password).plus("}")
     }
 }

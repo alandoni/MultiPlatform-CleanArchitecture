@@ -3,17 +3,20 @@ package com.adqmobile.domain.usecases
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
 import com.adqmobile.domain.repositories.user.UserRepository
-import java.lang.RuntimeException
-import javax.inject.Inject
 
-class LoginUseCase @Inject constructor(private val repository: UserRepository) : UseCase<LoginRequestEntity, LoginResponseEntity>() {
+class LoginUseCase constructor(private val repository: UserRepository) : UseCase<LoginRequestEntity, LoginResponseEntity>() {
 
     private fun isEmptyOrNull(string : String?) : Boolean {
         return string == null || string.isEmpty()
     }
 
     private fun isEmailValid(email: String): Boolean {
-        return email.contains("@")
+        for (i in 0..email.length) {
+            if (email[i] == '@') {
+                return true
+            }
+        }
+        return false
     }
 
     private fun isPasswordValid(password: String): Boolean {
@@ -34,6 +37,8 @@ class LoginUseCase @Inject constructor(private val repository: UserRepository) :
         }
 
         val entity = repository.getByEmail(params.email!!)
+
+
         return if (entity != null) {
             if (entity.password == params.password) {
                 LoginResponseEntity(true, entity.toString())

@@ -1,34 +1,56 @@
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
+apply plugin: 'kotlin-multiplatform'
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'com.google.dagger:dagger:2.21'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
-}
-
-sourceCompatibility = "7"
-targetCompatibility = "7"
 buildscript {
-    ext.kotlin_version = '1.3.21'
-    repositories {
-        mavenCentral()
+    ext.ios_framework_name = 'domain'
+}
+
+kotlin {
+    targets {
+        final def iosTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos") \
+                              ? presets.iosArm64 : presets.iosX64
+        fromPreset(iosTarget, 'iOS') {
+            binaries {
+                framework("$ios_framework_name") {
+                    embedBitcode('disable')
+                }
+            }
+            compilations.main.outputKinds('FRAMEWORK')
+        }
+
+        fromPreset(presets.jvm, 'android')
     }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    sourceSets {
+        commonMain.dependencies {
+            implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
+            api 'org.jetbrains.kotlin:kotlin-stdlib-common'
+        }
+        androidMain.dependencies {
+            api 'org.jetbrains.kotlin:kotlin-stdlib'
+        }
     }
 }
-repositories {
-    mavenCentral()
+
+// workaround for https://youtrack.jetbrains.com/issue/KT-27170
+configurations {
+    compileClasspath
 }
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
+
+task packForXCode(type: Sync) {
+    final File frameworkDir = new File(buildDir, "xcode-frameworks")
+    final String mode = project.findProperty("XCODE_CONFIGURATION")?.toUpperCase() ?: 'DEBUG'
+
+    inputs.property "mode", mode
+    dependsOn kotlin.targets.iOS.compilations.main.linkTaskName("FRAMEWORK", mode)
+
+    from { kotlin.targets.iOS.compilations.main.getBinary("FRAMEWORK", mode).parentFile }
+    into frameworkDir
+
+    doLast {
+        new File(frameworkDir, 'gradlew').with {
+            text = "#!/bin/bash\nexport 'JAVA_HOME=${System.getProperty("java.home")}'\ncd '${rootProject.rootDir}'\n./gradlew \$@\n"
+            setExecutable(true)
+        }
     }
 }
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
+
+tasks.build.dependsOn packForXCode
