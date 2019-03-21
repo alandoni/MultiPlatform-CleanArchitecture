@@ -1,5 +1,7 @@
 package com.adqmobile.domain.usecases
 
+import com.adqmobile.domain.Throws
+import com.adqmobile.domain.ValidateExpection
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
 import com.adqmobile.domain.repositories.user.UserRepository
@@ -23,17 +25,18 @@ class LoginUseCase constructor(private val repository: UserRepository) : UseCase
         return password.length > 4
     }
 
+    @Throws
     override fun run(params: LoginRequestEntity): LoginResponseEntity {
         // Check for a valid password, if the user entered one.
         if (isEmptyOrNull(params.password) || !isPasswordValid(params.password)) {
-            throw RuntimeException("Invalid Password")
+            throw ValidateExpection("Invalid Password")
         }
 
         // Check for a valid email address.
         if (isEmptyOrNull(params.email)) {
-            throw RuntimeException("Email required")
+            throw ValidateExpection("Email required")
         } else if (!isEmailValid(params.email!!)) {
-            throw RuntimeException("Invalid email")
+            throw ValidateExpection("Invalid email")
         }
 
         val entity = repository.getByEmail(params.email!!)

@@ -8,11 +8,17 @@
 
 import UIKit
 
-class BaseViewController<T: BasePresenter>: UIViewController {
-    var presenter: T;
+class BaseViewController<T: BasePresenter>: UIViewController, BaseViewControllerProtocol {
+    var presenter: T
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter.attach(view: self)
+        presenter.viewDidLoad()
+    }
     
     required init?(coder aDecoder: NSCoder) {
-        presenter = T();
-        super.init(coder: aDecoder);
+        presenter = T()
+        super.init(coder: aDecoder)
     }
 }

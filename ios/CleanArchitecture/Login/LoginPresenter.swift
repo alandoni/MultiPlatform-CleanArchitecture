@@ -20,20 +20,23 @@ class LoginPresenter: BasePresenter {
         self.view = view as? LoginViewControllerProtocol
     }
     
-    func viewDidLoad() {
-        
-    }
-    
     func attemptLogin() {
         let email = self.view?.getEmail()
         let password = self.view?.getPassword()
 
-        let loginRequest = LoginRequestEntity(email: email, password: password)
-        LoginUseCase.init(repository: <#T##UserRepository#>).execute(params: loginRequest)
+        let loginRequest = LoginRequestEntity(email: email!, password: password!)
+        
+        do {
+            let response = try LoginUseCase(repository: UserRepositoryImpl()).execute(params: loginRequest)
+            self.onFinish(result: response)
+        } catch {
+            self.onError(error: "")
+        }
     }
     
-    func onFinish(result: Any?) { //LoginResponseEntity?) {
+    func onFinish(result: LoginResponseEntity?) {
         view?.hideProgress()
+        view?.onFail(error: result!.error!)
         view?.onSuccess()
     }
     

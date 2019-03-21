@@ -22,10 +22,13 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
-            api 'org.jetbrains.kotlin:kotlin-stdlib-common'
-        }
-        androidMain.dependencies {
-            api 'org.jetbrains.kotlin:kotlin-stdlib'
+            implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+            implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+            implementation 'org.jetbrains.kotlin:kotlin-annotations-jvm'
+            implementation 'org.jetbrains.kotlin:kotlin-annotations-android'
+            //implementation 'org.jetbrains.kotlin:kotlin-android-sdk-annotations'
+            //implementation 'org.jetbrains.kotlin:kotlin-jdk-annotations'
+            implementation 'org.jetbrains.kotlin:kotlin-test-annotations-common'
         }
     }
 }

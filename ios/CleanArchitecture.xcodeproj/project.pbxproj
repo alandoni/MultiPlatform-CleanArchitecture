@@ -19,12 +19,12 @@
 		07A61FCE22403ACE008FD7D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A61FCC22403ACE008FD7D5 /* LaunchScreen.storyboard */; };
 		07A61FD922403ACE008FD7D5 /* CleanArchitectureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FD822403ACE008FD7D5 /* CleanArchitectureTests.swift */; };
 		07A61FE422403ACE008FD7D5 /* CleanArchitectureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FE322403ACE008FD7D5 /* CleanArchitectureUITests.swift */; };
-		6118D42F90AC3B413150ACF4 /* Pods_CleanArchitectureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF184343A3AB1B737F59E86 /* Pods_CleanArchitectureUITests.framework */; };
-		8F7C8B519EBC704DA393A8BC /* Pods_CleanArchitectureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B755B773A82A11925ACD63E /* Pods_CleanArchitectureTests.framework */; };
-		8FC75D4CE8B2B20A868106D7 /* Pods_CleanArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93CE5D2C2203C76397D98F5 /* Pods_CleanArchitecture.framework */; };
+		B52AA8F85DECBE6838B0A9AA /* Pods_CleanArchitectureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */; };
 		C1C3FCED2243D054004BFB29 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C3FCE72243D021004BFB29 /* main.framework */; };
 		C1C3FCEE2243D054004BFB29 /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C1C3FCE72243D021004BFB29 /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1C3FCF32243D354004BFB29 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3FCF22243D354004BFB29 /* UserRepositoryImpl.swift */; };
+		DAA99DB3052BFFB49158A464 /* Pods_CleanArchitectureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70A8C2645A4386FF79262F5 /* Pods_CleanArchitectureTests.framework */; };
+		F638AEEDE4CED79B13C920D4 /* Pods_CleanArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F717D8093A24325960E369 /* Pods_CleanArchitecture.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,11 +78,11 @@
 		07A61FE322403ACE008FD7D5 /* CleanArchitectureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanArchitectureUITests.swift; sourceTree = "<group>"; };
 		07A61FE522403ACE008FD7D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45E5D622840DFC0447EC165E /* Pods-CleanArchitectureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitectureTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitectureTests/Pods-CleanArchitectureTests.release.xcconfig"; sourceTree = "<group>"; };
-		7B755B773A82A11925ACD63E /* Pods_CleanArchitectureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F717D8093A24325960E369 /* Pods_CleanArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6C3544B92F28835F91523D /* Pods-CleanArchitectureUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitectureUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitectureUITests/Pods-CleanArchitectureUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		ABF184343A3AB1B737F59E86 /* Pods_CleanArchitectureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4BC6FE0EA7E18258D2FE147 /* Pods-CleanArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitecture.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture.release.xcconfig"; sourceTree = "<group>"; };
-		B93CE5D2C2203C76397D98F5 /* Pods_CleanArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B70A8C2645A4386FF79262F5 /* Pods_CleanArchitectureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C3FCE52243CAEB004BFB29 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../domain/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
 		C1C3FCE72243D021004BFB29 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../domain/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
 		C1C3FCF02243D0DB004BFB29 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1C3FCED2243D054004BFB29 /* main.framework in Frameworks */,
-				8FC75D4CE8B2B20A868106D7 /* Pods_CleanArchitecture.framework in Frameworks */,
+				F638AEEDE4CED79B13C920D4 /* Pods_CleanArchitecture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F7C8B519EBC704DA393A8BC /* Pods_CleanArchitectureTests.framework in Frameworks */,
+				DAA99DB3052BFFB49158A464 /* Pods_CleanArchitectureTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6118D42F90AC3B413150ACF4 /* Pods_CleanArchitectureUITests.framework in Frameworks */,
+				B52AA8F85DECBE6838B0A9AA /* Pods_CleanArchitectureUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,9 +207,9 @@
 			isa = PBXGroup;
 			children = (
 				C1C3FCE52243CAEB004BFB29 /* main.framework */,
-				B93CE5D2C2203C76397D98F5 /* Pods_CleanArchitecture.framework */,
-				7B755B773A82A11925ACD63E /* Pods_CleanArchitectureTests.framework */,
-				ABF184343A3AB1B737F59E86 /* Pods_CleanArchitectureUITests.framework */,
+				50F717D8093A24325960E369 /* Pods_CleanArchitecture.framework */,
+				B70A8C2645A4386FF79262F5 /* Pods_CleanArchitectureTests.framework */,
+				C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -435,7 +435,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $SRCROOT/../../sharedNative/build/xcode-frameworks\n./gradlew :sharedNative:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
+			shellScript = "cd $SRCROOT/../domain/build/xcode-frameworks\n./gradlew :domain:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -626,7 +626,7 @@
 		};
 		07A61FE922403ACE008FD7D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1C3FCF02243D0DB004BFB29 /* Config.xcconfig */;
+			baseConfigurationReference = DB4003B22A1BD20D19BB2FA4 /* Pods-CleanArchitecture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -647,7 +647,7 @@
 		};
 		07A61FEA22403ACE008FD7D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1C3FCF02243D0DB004BFB29 /* Config.xcconfig */;
+			baseConfigurationReference = B4BC6FE0EA7E18258D2FE147 /* Pods-CleanArchitecture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -668,7 +668,7 @@
 		};
 		07A61FEC22403ACE008FD7D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1C3FCF02243D0DB004BFB29 /* Config.xcconfig */;
+			baseConfigurationReference = DCE75C02A04936312E53A223 /* Pods-CleanArchitectureTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -689,7 +689,7 @@
 		};
 		07A61FED22403ACE008FD7D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1C3FCF02243D0DB004BFB29 /* Config.xcconfig */;
+			baseConfigurationReference = 45E5D622840DFC0447EC165E /* Pods-CleanArchitectureTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -710,7 +710,7 @@
 		};
 		07A61FEF22403ACE008FD7D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1C3FCF02243D0DB004BFB29 /* Config.xcconfig */;
+			baseConfigurationReference = 9E6C3544B92F28835F91523D /* Pods-CleanArchitectureUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -730,7 +730,7 @@
 		};
 		07A61FF022403ACE008FD7D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1C3FCF02243D0DB004BFB29 /* Config.xcconfig */;
+			baseConfigurationReference = D1BA4779AB820FCB0C86612F /* Pods-CleanArchitectureUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

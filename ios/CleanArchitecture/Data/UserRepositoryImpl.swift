@@ -9,8 +9,8 @@
 import Foundation
 import main
 
-class UserRepositoryImpl : UserRepository {
+class UserRepositoryImpl : NSObject, UserRepository {
     func getByEmail(email: String) -> UserEntity? {
-        return UserEntity(name: "Alan", email: "alan.etm@gmail.com", password: "123")
+        return UserEntity(name: "Alan", email: "alan.etm@gmail.com", password: "123123")
     }
 }

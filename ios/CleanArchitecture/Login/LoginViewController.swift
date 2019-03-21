@@ -44,8 +44,8 @@ class LoginViewController: BaseViewController<LoginPresenter>, LoginViewControll
     }
     
     func onSuccess() {
-        errorLabel.isHidden = true
-        loginButtonTopConstraint.constant = LOGIN_BUTTON_DEFAULT_TOP_CONSTRAINT_VALUE
+        errorLabel.isHidden = false
+        loginButtonTopConstraint.constant = LOGIN_BUTTON_WITH_ERROR_TOP_CONSTRAINT_VALUE//LOGIN_BUTTON_DEFAULT_TOP_CONSTRAINT_VALUE
     }
     
     func showProgress() {

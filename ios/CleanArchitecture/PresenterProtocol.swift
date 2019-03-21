@@ -13,4 +13,6 @@ class BasePresenter {
     required init() { }
     
     func attach(view: BaseViewControllerProtocol) { }
+    
+    func viewDidLoad() { }
 }
