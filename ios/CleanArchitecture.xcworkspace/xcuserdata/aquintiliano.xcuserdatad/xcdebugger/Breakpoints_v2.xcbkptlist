@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CleanArchitecture/Login/LoginPresenter.swift"
-            timestampString = "574878949.3834471"
+            timestampString = "574952334.635869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "attemptLogin()"
             landmarkType = "7">
          </BreakpointContent>

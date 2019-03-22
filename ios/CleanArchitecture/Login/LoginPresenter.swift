@@ -27,7 +27,8 @@ class LoginPresenter: BasePresenter {
         let loginRequest = LoginRequestEntity(email: email!, password: password!)
         
         do {
-            let response = try LoginUseCase(repository: UserRepositoryImpl()).execute(params: loginRequest)
+            let useCase = LoginUseCase(repository: UserRepositoryImpl())
+            let response = try useCase.execute(params: loginRequest)
             self.onFinish(result: response)
         } catch {
             self.onError(error: "")
