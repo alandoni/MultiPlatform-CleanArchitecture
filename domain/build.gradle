@@ -1,13 +1,11 @@
 apply plugin: 'kotlin-multiplatform'
-
 buildscript {
     ext.ios_framework_name = 'domain'
 }
-
 kotlin {
     targets {
-        final def iosTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos") \
-                              ? presets.iosArm64 : presets.iosX64
+        final def iosTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")  \
+                               ? presets.iosArm64 : presets.iosX64
         fromPreset(iosTarget, 'iOS') {
             binaries {
                 framework("$ios_framework_name") {
@@ -23,21 +21,16 @@ kotlin {
         commonMain.dependencies {
             implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
             implementation 'org.jetbrains.kotlin:kotlin-stdlib'
-            implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-            implementation 'org.jetbrains.kotlin:kotlin-annotations-jvm'
-            implementation 'org.jetbrains.kotlin:kotlin-annotations-android'
-            //implementation 'org.jetbrains.kotlin:kotlin-android-sdk-annotations'
-            //implementation 'org.jetbrains.kotlin:kotlin-jdk-annotations'
-            implementation 'org.jetbrains.kotlin:kotlin-test-annotations-common'
+            implementation 'org.jetbrains.kotlin:kotlin-native-gradle-plugin:1.3.21'
+            implementation 'org.jetbrains.kotlin:kotlin-annotation-processing-maven:1.3.21'
+            implementation 'org.jetbrains.kotlin:kotlin-jdk-annotations:1.0.0'
         }
     }
 }
-
 // workaround for https://youtrack.jetbrains.com/issue/KT-27170
 configurations {
     compileClasspath
 }
-
 task packForXCode(type: Sync) {
     final File frameworkDir = new File(buildDir, "xcode-frameworks")
     final String mode = project.findProperty("XCODE_CONFIGURATION")?.toUpperCase() ?: 'DEBUG'
@@ -55,5 +48,4 @@ task packForXCode(type: Sync) {
         }
     }
 }
-
 tasks.build.dependsOn packForXCode

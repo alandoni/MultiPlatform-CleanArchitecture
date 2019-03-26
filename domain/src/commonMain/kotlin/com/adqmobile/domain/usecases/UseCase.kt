@@ -1,6 +1,6 @@
 package com.adqmobile.domain.usecases
 
-import com.adqmobile.domain.ValidateExpection
+import com.adqmobile.domain.Throws
 
 abstract class UseCase<T, V> {
 

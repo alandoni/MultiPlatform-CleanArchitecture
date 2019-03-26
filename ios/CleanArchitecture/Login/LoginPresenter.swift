@@ -28,10 +28,11 @@ class LoginPresenter: BasePresenter {
         
         do {
             let useCase = LoginUseCase(repository: UserRepositoryImpl())
-            let response = try useCase.execute(params: loginRequest)
-            self.onFinish(result: response)
+            var result: LoginResponseEntity? = nil
+            try useCase.execute(params: loginRequest, result: &result)
+            self.onFinish(result: result)
         } catch {
-            self.onError(error: "")
+            self.onError(error: error.localizedDescription)
         }
     }
     
