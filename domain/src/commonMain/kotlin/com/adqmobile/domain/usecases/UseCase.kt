@@ -8,7 +8,7 @@ abstract class UseCase<T, V> {
     abstract fun run(params: T) : V
 
     @Throws
-    fun execute(params: T) : V {
-        return this.run(params)
+    fun execute(param: T) : V {
+        return this.run(param)
     }
 }

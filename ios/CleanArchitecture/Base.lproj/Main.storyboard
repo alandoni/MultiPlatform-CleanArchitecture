@@ -66,7 +66,7 @@
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDJ-sN-LCX" userLabel="Progress View">
                                 <rect key="frame" x="0.0" y="244" width="375" height="179"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jSI-eg-rSu">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jSI-eg-rSu">
                                         <rect key="frame" x="177.5" y="79.5" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>

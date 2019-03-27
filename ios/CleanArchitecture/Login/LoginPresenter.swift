@@ -9,7 +9,7 @@
 import Foundation
 import main
 
-class LoginPresenter: BasePresenter {
+class LoginPresenter: BasePresenter, CallBack {
     var view: LoginViewControllerProtocol?
     
     required init() {
@@ -23,22 +23,16 @@ class LoginPresenter: BasePresenter {
     func attemptLogin() {
         let email = self.view?.getEmail()
         let password = self.view?.getPassword()
+        view?.showProgress()
 
         let loginRequest = LoginRequestEntity(email: email!, password: password!)
-        
-        do {
-            let useCase = LoginUseCase(repository: UserRepositoryImpl())
-            var result: LoginResponseEntity? = nil
-            try useCase.execute(params: loginRequest, result: &result)
-            self.onFinish(result: result)
-        } catch {
-            self.onError(error: error.localizedDescription)
-        }
+        let useCase = LoginUseCase(repository: UserRepositoryImpl())
+        Task<LoginRequestEntity, LoginResponseEntity>(useCase: useCase, callBack: self).execute(param: loginRequest)
     }
     
-    func onFinish(result: LoginResponseEntity?) {
+    func onFinish(result: Any?) {
         view?.hideProgress()
-        view?.onFail(error: result!.error!)
+        view?.onFail(error: (result as! LoginResponseEntity).error!)
         view?.onSuccess()
     }
     

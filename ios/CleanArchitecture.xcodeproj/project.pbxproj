@@ -20,6 +20,8 @@
 		07A61FD922403ACE008FD7D5 /* CleanArchitectureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FD822403ACE008FD7D5 /* CleanArchitectureTests.swift */; };
 		07A61FE422403ACE008FD7D5 /* CleanArchitectureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FE322403ACE008FD7D5 /* CleanArchitectureUITests.swift */; };
 		B52AA8F85DECBE6838B0A9AA /* Pods_CleanArchitectureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */; };
+		C12F7AE1224B9B8300955A99 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F7AE0224B9B8300955A99 /* Task.swift */; };
+		C12F7AE3224B9CAF00955A99 /* CallBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12F7AE2224B9CAF00955A99 /* CallBack.swift */; };
 		C1C3FCED2243D054004BFB29 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C3FCE72243D021004BFB29 /* main.framework */; };
 		C1C3FCEE2243D054004BFB29 /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C1C3FCE72243D021004BFB29 /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1C3FCF32243D354004BFB29 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3FCF22243D354004BFB29 /* UserRepositoryImpl.swift */; };
@@ -83,6 +85,8 @@
 		B4BC6FE0EA7E18258D2FE147 /* Pods-CleanArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitecture.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture.release.xcconfig"; sourceTree = "<group>"; };
 		B70A8C2645A4386FF79262F5 /* Pods_CleanArchitectureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C12F7AE0224B9B8300955A99 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		C12F7AE2224B9CAF00955A99 /* CallBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallBack.swift; sourceTree = "<group>"; };
 		C1C3FCE52243CAEB004BFB29 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../domain/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
 		C1C3FCE72243D021004BFB29 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../domain/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
 		C1C3FCF02243D0DB004BFB29 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				071552EB224049DD000298EC /* BaseViewController.swift */,
 				071552EF22404AB4000298EC /* PresenterProtocol.swift */,
 				071552F122404B24000298EC /* BaseViewControllerProtocol.swift */,
+				C12F7AE0224B9B8300955A99 /* Task.swift */,
+				C12F7AE2224B9CAF00955A99 /* CallBack.swift */,
 			);
 			path = CleanArchitecture;
 			sourceTree = "<group>";
@@ -446,11 +452,13 @@
 			files = (
 				07A61FC622403ACC008FD7D5 /* LoginViewController.swift in Sources */,
 				07A61FC422403ACC008FD7D5 /* AppDelegate.swift in Sources */,
+				C12F7AE3224B9CAF00955A99 /* CallBack.swift in Sources */,
 				071552F422404DCB000298EC /* LoginPresenter.swift in Sources */,
 				071552EE22404A38000298EC /* LoginViewControllerProtocol.swift in Sources */,
 				C1C3FCF32243D354004BFB29 /* UserRepositoryImpl.swift in Sources */,
 				071552EC224049DD000298EC /* BaseViewController.swift in Sources */,
 				071552F222404B24000298EC /* BaseViewControllerProtocol.swift in Sources */,
+				C12F7AE1224B9B8300955A99 /* Task.swift in Sources */,
 				071552F022404AB4000298EC /* PresenterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
