@@ -10,13 +10,15 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.adqmobile.cleanarchitecture.BaseActivity
 import com.adqmobile.cleanarchitecture.R
+import com.adqmobile.domain.presentation.ILoginView
+import com.adqmobile.domain.presentation.LoginPresenter
 import kotlinx.android.synthetic.main.activity_login.*
 
 
 /**
  * A login screen that offers login via email/password.
  */
-class LoginActivity : BaseActivity<LoginPresenter>(), ILoginActivity {
+class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.

@@ -1,8 +1,8 @@
-package com.adqmobile.cleanarchitecture.login
+package com.adqmobile.domain.presentation
 
-import com.adqmobile.cleanarchitecture.IBaseActivity
+import com.adqmobile.domain.presentation.IBaseView
 
-interface ILoginActivity : IBaseActivity {
+interface ILoginView : IBaseView {
     fun getEmail() : String
     fun getPassword() : String
     fun onFail(error : String?)

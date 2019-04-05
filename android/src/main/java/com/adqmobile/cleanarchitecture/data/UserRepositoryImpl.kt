@@ -22,10 +22,11 @@ class UserRepositoryImpl @Inject constructor(val context: Context) : UserReposit
 
         val loginRequestEntity = LoginRequestEntity(email, "")
         val api = GetUserApi(loginRequestEntity)
-        var userEntity = Request<LoginRequestEntity, UserEntity>(context).request(api, UserEntity::class.java)
+        var userEntity = UserEntity("Alan", "adq@adq", "123123") //Request<LoginRequestEntity, UserEntity>(context).request(api, UserEntity::class.java)
 
         return if (userEntity != null) {
             val db = DatabaseHandler(context)
+            db.onCreate(db.writableDatabase)
 
             db.writableDatabase.execSQL(
                 UserInfoBD().insert(),

@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import main
 
 let LOGIN_BUTTON_DEFAULT_TOP_CONSTRAINT_VALUE: CGFloat = 20
 let LOGIN_BUTTON_WITH_ERROR_TOP_CONSTRAINT_VALUE: CGFloat = 61
 
-class LoginViewController: BaseViewController<LoginPresenter>, LoginViewControllerProtocol {
+class LoginViewController: BaseViewController<LoginPresenter>, ILoginView {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
@@ -20,13 +21,15 @@ class LoginViewController: BaseViewController<LoginPresenter>, LoginViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = LoginPresenter(loginUseCase: LoginUseCase(repository: UserRepositoryImpl()))
+        presenter?.attach(view: self)
         loginButtonTopConstraint.constant = LOGIN_BUTTON_DEFAULT_TOP_CONSTRAINT_VALUE
         errorLabel.isHidden = true
         progressView.isHidden = true
     }
 
     @IBAction func didTouchLogin(_ sender: Any) {
-        presenter.attemptLogin()
+        presenter?.attemptLogin()
     }
     
     func getEmail() -> String {
@@ -37,7 +40,7 @@ class LoginViewController: BaseViewController<LoginPresenter>, LoginViewControll
         return passwordTextField.text!
     }
     
-    func onFail(error: String) {
+    func onFail(error: String?) {
         errorLabel.text = error
         errorLabel.isHidden = false
         loginButtonTopConstraint.constant = LOGIN_BUTTON_WITH_ERROR_TOP_CONSTRAINT_VALUE

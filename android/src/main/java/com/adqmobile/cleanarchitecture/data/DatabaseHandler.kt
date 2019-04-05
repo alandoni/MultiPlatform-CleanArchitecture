@@ -15,7 +15,7 @@ class DatabaseHandler @Inject constructor(private val context: Context) : SQLite
 
     override fun onCreate(db: SQLiteDatabase) {
         if (ContextCompat.checkSelfPermission(context.applicationContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(context as Activity,
+            if (ActivityCompat.shouldShowRequestPermissionRationale(context as Activity,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 return
             }

@@ -1,25 +1,20 @@
-package com.adqmobile.cleanarchitecture.login
+package com.adqmobile.domain.presentation
 
-import android.os.Bundle
-import com.adqmobile.cleanarchitecture.IBaseActivity
-import com.adqmobile.cleanarchitecture.IPresenter
-import com.adqmobile.cleanarchitecture.task.CallBack
-import com.adqmobile.cleanarchitecture.task.Task
+import com.adqmobile.domain.presentation.IBaseView
+import com.adqmobile.domain.presentation.task.CallBack
+import com.adqmobile.domain.presentation.task.Task
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
+import com.adqmobile.domain.presentation.ILoginView
 import com.adqmobile.domain.usecases.LoginUseCase
-import javax.inject.Inject
+import com.adqmobile.domain.presentation.IPresenter
 
-class LoginPresenter @Inject constructor() : IPresenter, CallBack<LoginResponseEntity> {
+class LoginPresenter constructor(private val loginUseCase: LoginUseCase) : IPresenter, CallBack<LoginResponseEntity> {
 
-    private lateinit var view: ILoginActivity
-    @Inject lateinit var loginUseCase: LoginUseCase
+    private lateinit var view: ILoginView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-    }
-
-    override fun attach(view: IBaseActivity) {
-        this.view = view as ILoginActivity
+    override fun attach(view: IBaseView) {
+        this.view = view as ILoginView
     }
 
     /**

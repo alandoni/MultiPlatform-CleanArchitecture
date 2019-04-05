@@ -2,7 +2,7 @@ package com.adqmobile.domain.repositories.user
 
 class UserInfoBD {
     fun createTable() : String {
-        return "CREATE TABLE `users` (" +
+        return "CREATE TABLE IF NOT EXISTS `users` (" +
                 "`id` INTEGER PRIMARY KEY," +
                 "`name` TEXT," +
                 "`email` TEXT," +
