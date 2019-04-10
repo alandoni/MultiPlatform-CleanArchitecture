@@ -1,14 +1,18 @@
 package com.adqmobile.domain.usecases
 
 import com.adqmobile.domain.Throws
-import com.adqmobile.domain.ValidateExpection
+import com.adqmobile.domain.ValidationException
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
-import com.adqmobile.domain.repositories.user.UserRepository
+import com.adqmobile.domain.repositories.user.UserLocalRepository
+import com.adqmobile.domain.repositories.user.UserRemoteRepository
 
-class LoginUseCase constructor(private val repository: UserRepository) : UseCase<LoginRequestEntity, LoginResponseEntity>() {
+class LoginUseCase constructor(
+    private val localRepository: UserLocalRepository,
+    private val remoteRepository: UserRemoteRepository
+): UseCase<LoginRequestEntity, LoginResponseEntity> {
 
-    private fun isEmptyOrNull(string : String?) : Boolean {
+    private fun isEmptyOrNull(string: String?): Boolean {
         return string == null || string.isEmpty()
     }
 
@@ -26,28 +30,24 @@ class LoginUseCase constructor(private val repository: UserRepository) : UseCase
     }
 
     @Throws
-    override fun run(params: LoginRequestEntity): LoginResponseEntity {
+    override fun execute(param: LoginRequestEntity): LoginResponseEntity {
         // Check for a valid password, if the user entered one.
-        if (isEmptyOrNull(params.password) || !isPasswordValid(params.password)) {
-            throw ValidateExpection("Invalid Password")
+        if (isEmptyOrNull(param.password) || !isPasswordValid(param.password!!)) {
+            throw ValidationException("Invalid Password")
         }
 
         // Check for a valid email address.
-        if (isEmptyOrNull(params.email)) {
-            throw ValidateExpection("Email required")
-        } else if (!isEmailValid(params.email!!)) {
-            throw ValidateExpection("Invalid email")
+        if (isEmptyOrNull(param.email)) {
+            throw ValidationException("Email required")
+        } else if (!isEmailValid(param.email)) {
+            throw ValidationException("Invalid email")
         }
 
-        val entity = repository.getByEmail(params.email!!)
-
-
+        val entity = remoteRepository.getByEmail(param)
         return if (entity != null) {
-            if (entity.password == params.password) {
-                LoginResponseEntity(true, entity.toString())
-            } else {
-                LoginResponseEntity(true, "Invalid password")
-            }
+            val id = localRepository.insert(entity)
+            val entityNew = localRepository.selectByID(id)
+            LoginResponseEntity(true, entityNew.toString())
         } else {
             LoginResponseEntity(false, "Invalid email")
         }

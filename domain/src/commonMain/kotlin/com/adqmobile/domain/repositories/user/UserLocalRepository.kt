@@ -1,0 +1,54 @@
+package com.adqmobile.domain.repositories.user
+
+import com.adqmobile.domain.entities.UserEntity
+import com.adqmobile.domain.repositories.AbstractDatabase
+
+class UserLocalRepository(private val database: AbstractDatabase) {
+    fun createTable() {
+        database.runStatement("CREATE TABLE IF NOT EXISTS `users` (" +
+                "`id` INTEGER PRIMARY KEY," +
+                "`name` TEXT," +
+                "`email` TEXT," +
+                "`password` TEXT);")
+    }
+
+    fun selectAll(): List<UserEntity>? {
+        val list = database.executeSelectQuery("SELECT * FROM `users`")
+        return convert(list)
+    }
+
+    fun insert(userEntity: UserEntity): Int {
+        createTable()
+        return database.runStatement("INSERT INTO `users` (name, email, password) VALUES (?, ?, ?);",
+            userEntity.name, userEntity.email, userEntity.password)
+    }
+
+    fun selectByID(id: Int): UserEntity? {
+        val list = database.executeSelectQuery("SELECT * FROM `users` WHERE `users`.`id` = ?;", id)
+        val users = convert(list) ?: return null
+        return users[0]
+    }
+
+    fun delete(id: Int): Int {
+        return database.runStatement("DELETE FROM `users` WHERE `users`.`id` = ?;", id)
+    }
+
+    fun convert(list: List<Map<String, Any?>>?): List<UserEntity>? {
+        if (list == null) {
+            return null
+        }
+        val newList = mutableListOf<UserEntity>()
+        for (userMap: Map<String, Any?> in list) {
+            newList.add(convert(userMap))
+        }
+        return newList
+    }
+
+    fun convert(userMap: Map<String, Any?>): UserEntity {
+        return UserEntity(
+            userMap["name"] as String,
+            userMap["email"] as String,
+            userMap["password"] as String
+        )
+    }
+}

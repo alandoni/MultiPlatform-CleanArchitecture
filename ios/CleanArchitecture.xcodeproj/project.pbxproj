@@ -16,9 +16,10 @@
 		07A61FD922403ACE008FD7D5 /* CleanArchitectureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FD822403ACE008FD7D5 /* CleanArchitectureTests.swift */; };
 		07A61FE422403ACE008FD7D5 /* CleanArchitectureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FE322403ACE008FD7D5 /* CleanArchitectureUITests.swift */; };
 		B52AA8F85DECBE6838B0A9AA /* Pods_CleanArchitectureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */; };
+		C16BE4C4225E66CB004B7961 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16BE4C3225E66CB004B7961 /* Request.swift */; };
+		C16BE4C6225E6A72004B7961 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16BE4C5225E6A72004B7961 /* Database.swift */; };
 		C1C3FCED2243D054004BFB29 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C3FCE72243D021004BFB29 /* main.framework */; };
 		C1C3FCEE2243D054004BFB29 /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C1C3FCE72243D021004BFB29 /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C1C3FCF32243D354004BFB29 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3FCF22243D354004BFB29 /* UserRepositoryImpl.swift */; };
 		DAA99DB3052BFFB49158A464 /* Pods_CleanArchitectureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70A8C2645A4386FF79262F5 /* Pods_CleanArchitectureTests.framework */; };
 		F638AEEDE4CED79B13C920D4 /* Pods_CleanArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F717D8093A24325960E369 /* Pods_CleanArchitecture.framework */; };
 /* End PBXBuildFile section */
@@ -75,10 +76,11 @@
 		B4BC6FE0EA7E18258D2FE147 /* Pods-CleanArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitecture.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture.release.xcconfig"; sourceTree = "<group>"; };
 		B70A8C2645A4386FF79262F5 /* Pods_CleanArchitectureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C16BE4C3225E66CB004B7961 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		C16BE4C5225E6A72004B7961 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		C1C3FCE52243CAEB004BFB29 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../domain/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
 		C1C3FCE72243D021004BFB29 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../domain/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
 		C1C3FCF02243D0DB004BFB29 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		C1C3FCF22243D354004BFB29 /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		D1BA4779AB820FCB0C86612F /* Pods-CleanArchitectureUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitectureUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitectureUITests/Pods-CleanArchitectureUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DB4003B22A1BD20D19BB2FA4 /* Pods-CleanArchitecture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitecture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture.debug.xcconfig"; sourceTree = "<group>"; };
 		DCE75C02A04936312E53A223 /* Pods-CleanArchitectureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitectureTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitectureTests/Pods-CleanArchitectureTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -205,7 +207,8 @@
 		C1C3FCF12243D323004BFB29 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				C1C3FCF22243D354004BFB29 /* UserRepositoryImpl.swift */,
+				C16BE4C3225E66CB004B7961 /* Request.swift */,
+				C16BE4C5225E6A72004B7961 /* Database.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -457,9 +460,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C16BE4C6225E6A72004B7961 /* Database.swift in Sources */,
 				07A61FC622403ACC008FD7D5 /* LoginViewController.swift in Sources */,
 				07A61FC422403ACC008FD7D5 /* AppDelegate.swift in Sources */,
-				C1C3FCF32243D354004BFB29 /* UserRepositoryImpl.swift in Sources */,
+				C16BE4C4225E66CB004B7961 /* Request.swift in Sources */,
 				071552EC224049DD000298EC /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

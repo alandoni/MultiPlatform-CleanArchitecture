@@ -10,33 +10,21 @@ open class Task<U: IEntity, V: IEntity>(
     private val useCase: UseCase<U, V>,
     private val callBack: CallBack<V>?
 ) {
-
     private lateinit var error : Exception
-    private var result : V? = null
 
     fun execute(param: U) : Job {
-
+        var result : V? = null
         val job = GlobalScope.launch(getMainDispatcher()) {
             try {
                 Log.d("Going to call use case")
                 result = useCase.execute(param)
-                callBack?.onFinish(result)
+                //callBack?.onFinish(result)
             } catch (e: Exception) {
                 error = e
-                print(e)
-                if (error.message != null) {
-                    callBack?.onError(error.message!!)
-                } else {
-                    callBack?.onError(error.toString())
-                }
             }
         }
         job.invokeOnCompletion {
-            if (result != null) {
-
-            } else {
-
-            }
+            onPostExecute(result)
         }
         return job
     }

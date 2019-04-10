@@ -21,7 +21,8 @@ class LoginViewController: BaseViewController<LoginPresenter>, ILoginView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = LoginPresenter(loginUseCase: LoginUseCase(repository: UserRepositoryImpl()))
+        presenter = LoginPresenter(loginUseCase: LoginUseCase(localRepository: UserLocalRepository(database: try! Database().initDatabase()),
+                                                              remoteRepository: UserRemoteRepository(request: HttpRequest())))
         presenter?.attach(view: self)
         loginButtonTopConstraint.constant = LOGIN_BUTTON_DEFAULT_TOP_CONSTRAINT_VALUE
         errorLabel.isHidden = true

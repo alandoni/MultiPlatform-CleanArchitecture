@@ -1,18 +1,10 @@
 package com.adqmobile.cleanarchitecture.data
 
-import android.Manifest
-import android.app.Activity
 import android.content.Context
-import android.content.pm.PackageManager
-import android.database.Cursor
-import android.database.sqlite.SQLiteStatement
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.database.sqlite.transaction
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.UserEntity
 import com.adqmobile.domain.repositories.user.GetUserApi
-import com.adqmobile.domain.repositories.user.UserInfoBD
+import com.adqmobile.domain.repositories.user.UserLocalRepository
 import com.adqmobile.domain.repositories.user.UserRepository
 import javax.inject.Inject
 
@@ -29,7 +21,7 @@ class UserRepositoryImpl @Inject constructor(val context: Context) : UserReposit
             db.onCreate(db.writableDatabase)
 
             db.writableDatabase.execSQL(
-                UserInfoBD().insert(),
+                UserLocalRepository().insert(),
                 arrayOf(userEntity.name, userEntity.email, userEntity.password)
             )
 
@@ -39,7 +31,7 @@ class UserRepositoryImpl @Inject constructor(val context: Context) : UserReposit
             cursorInsert.close()
 
             val cursor = db.readableDatabase.rawQuery(
-                UserInfoBD().selectByID(),
+                UserLocalRepository().selectByID(),
                 arrayOf(id.toString())
             )
 
