@@ -17,7 +17,6 @@ open class Task<U: IEntity, V: IEntity>(
     fun execute(param: U) : Job {
 
         val job = GlobalScope.launch(getMainDispatcher()) {
-            delay(3000)
             try {
                 Log.d("Going to call use case")
                 result = useCase.execute(param)
