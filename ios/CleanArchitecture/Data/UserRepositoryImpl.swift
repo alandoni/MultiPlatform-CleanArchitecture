@@ -54,6 +54,13 @@ class UserRepositoryImpl : NSObject, UserRepository {
         let stmtInsert = try db.prepare(userDb.insert())
         try stmtInsert.run(userEntity.name, userEntity.email, userEntity.password)
         let id = db.lastInsertRowid
+        
+        let statement = try! db.prepare(userDb.selectByID(), id)
+        if (try statement.step()) {
+            let columnIndex: Int = statement.columnNames.firstIndex(of: "name")!
+            let blob = statement.row[columnIndex] as String
+            NSLog(blob)
+        }
         return id
     }
 }
