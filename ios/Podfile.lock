@@ -1,3 +1,22 @@
-PODFILE CHECKSUM: 731bfb08a4be0063b51da37042294f6e6c72b3ec
+PODS:
+  - SQLite.swift (0.11.5):
+    - SQLite.swift/standard (= 0.11.5)
+  - SQLite.swift/standard (0.11.5)
+  - SwiftyJSON (4.2.0)
+
+DEPENDENCIES:
+  - SQLite.swift (~> 0.11.5)
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SQLite.swift
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+
+PODFILE CHECKSUM: 38134ebdf214b5a4a57e5897517e6ee4f794ac92
 
 COCOAPODS: 1.6.1

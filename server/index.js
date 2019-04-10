@@ -10,17 +10,16 @@ app.listen(app.get('port'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.isReady = () => {
-	return true;
-};
-
 app.get('/api/users', (req, res) => {
-    res.send({name: 'Alan', email: 'alan.etm@gmail.com', password: '123123'});
+    try {
+        setInterval(() => {
+            res.send({name: 'Alan', email: 'alan.etm@gmail.com', password: '123123'});
+        }, 1000 * 3);
+    } catch (err) {
+    }
 });
 app.get('*', (req, res) => {
     res.send('OK');
 });
-
-console.log(app)
 
 module.exports = app;
