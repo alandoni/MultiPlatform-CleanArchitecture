@@ -7,12 +7,14 @@ import kotlinx.serialization.json.Json
 data class LoginRequestEntity(
     var email: String,
     var password: String?
-): Entity {
+): Entity() {
     override fun toString(): String {
-        return Json.stringify(LoginRequestEntity.serializer(), this)
+        return Json.stringify(serializer(), this)
     }
 
-    override fun fromJson(json: String): Entity {
-        return Json.parse(LoginRequestEntity.serializer(), json)
+    companion object {
+        fun fromJson(json: String): LoginRequestEntity {
+            return Json.parse(serializer(), json)
+        }
     }
 }

@@ -8,14 +8,10 @@ data class UserEntity(
     var name: String,
     var email: String,
     var password: String
-): Entity {
+): Entity() {
 
     override fun toString(): String {
-        return Json.stringify(UserEntity.serializer(), this)
-    }
-
-    override fun fromJson(json: String): Entity {
-        return Json.parse(UserEntity.serializer(), json)
+        return Json.stringify(serializer(), this)
     }
 
     companion object {
@@ -25,6 +21,10 @@ data class UserEntity(
                 map["email"]!!,
                 map["password"]!!
             )
+        }
+
+        fun fromJson(json: String): UserEntity {
+            return Json.parse(serializer(), json)
         }
     }
 }

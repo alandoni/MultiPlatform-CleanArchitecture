@@ -1,23 +1,19 @@
 package com.adqmobile.cleanarchitecture.data
 
-import com.adqmobile.domain.Log
-import com.adqmobile.domain.entities.Entity
-import com.adqmobile.domain.repositories.IApi
+import com.adqmobile.domain.repositories.Api
 import com.adqmobile.domain.repositories.Request
-import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
-import com.google.gson.reflect.TypeToken
 
-class HttpRequest<U: Entity>: Request<U> {
+class HttpRequest: Request {
 
-    private fun connect(api: IApi<U>) : HttpURLConnection {
+    private fun connect(api: Api) : HttpURLConnection {
         var urlConnection : HttpURLConnection? = null
 
         try {
-            val url = URL("http://192.168.3.102:3000/api/" + api.getUrl() + "/")
+            val url = URL("http://192.168.0.13:3000/api/" + api.getUrl() + "/")
             urlConnection = url.openConnection() as HttpURLConnection
             urlConnection.requestMethod = api.getMethod().toString()
             if (api.getHeaders() != null) {
@@ -65,11 +61,10 @@ class HttpRequest<U: Entity>: Request<U> {
         return buffer.toString()
     }
 
-    override fun execute(api: IApi<U>): Map<String, String?>? {
+    override fun execute(api: Api): String {
         val urlConnection = connect(api)
         val resultString = readResponse(urlConnection)
         urlConnection.disconnect()
-        val type = object : TypeToken<Map<String, String>>(){}.type
-        return Gson().fromJson(resultString, type)
+        return resultString
     }
 }

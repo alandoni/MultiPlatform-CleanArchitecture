@@ -7,12 +7,14 @@ import kotlinx.serialization.json.Json
 data class LoginResponseEntity(
     var success: Boolean,
     var error: String?
-): Entity {
+): Entity() {
     override fun toString(): String {
-        return Json.stringify(LoginResponseEntity.serializer(), this)
+        return Json.stringify(serializer(), this)
     }
 
-    override fun fromJson(json: String): Entity {
-        return Json.parse(LoginResponseEntity.serializer(), json)
+    companion object {
+        fun fromJson(json: String): LoginResponseEntity {
+            return Json.parse(serializer(), json)
+        }
     }
 }
