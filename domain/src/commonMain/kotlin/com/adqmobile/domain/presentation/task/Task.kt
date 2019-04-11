@@ -17,10 +17,9 @@ open class Task<U: Entity, V: Entity>(
         var result : V? = null
         val job = GlobalScope.launch(getIODispatcher()) {
             try {
-                Log.d("Going to call use case")
                 result = useCase.execute(param)
             } catch (e: Exception) {
-                print(e)
+                Log.e(e)
                 error = e
             } finally {
                 launch(getMainDispatcher()) {
