@@ -8,30 +8,27 @@
 
 import UIKit
 import main
-import SwiftyJSON
 
 class HttpRequest: NSObject, Request {
-    func execute(api: IApi) -> [String : Any]? {
+    func execute(api: Api) -> String {
         NSLog("Requesting")
         let semaphore = DispatchSemaphore(value: 0)
-        var json: JSON? = nil
+        var responseStr: String = ""
         let task = URLSession.shared.dataTask(with: createRequest(api: api)) { data, response, error in
-            if (error == nil) {
-                do {
-                    json = try JSON(data: data!)
-                    NSLog("Requested JSON")
-                } catch { }
+            if (error == nil && data != nil) {
+                responseStr = String(data: data!, encoding: .utf8)!
+                NSLog("Requested JSON")
             }
             semaphore.signal()
         }
         task.resume()
         semaphore.wait()
         NSLog("Returning JSON")
-        return json?.dictionaryObject
+        return responseStr
     }
     
-    func createRequest(api: IApi) -> URLRequest {
-        let url = URL(string: "http://192.168.3.102:3000/api/\(api.getUrl())/")!
+    func createRequest(api: Api) -> URLRequest {
+        let url = URL(string: "http://192.168.0.16:3000/api/\(api.getUrl())/")!
         var request = URLRequest(url: url)
         request.httpMethod = api.getMethod().name
         
