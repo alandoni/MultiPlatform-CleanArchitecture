@@ -39,3 +39,7 @@ object MainLoopDispatcher: CoroutineDispatcher() {
 actual fun getMainDispatcher(): CoroutineDispatcher {
     return MainLoopDispatcher
 }
+
+actual fun getIODispatcher(): CoroutineDispatcher {
+    return MainLoopDispatcher
+}

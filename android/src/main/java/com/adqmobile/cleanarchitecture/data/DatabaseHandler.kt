@@ -20,14 +20,10 @@ class DatabaseHandler @Inject constructor(private val context: Context): SQLiteO
                 return
             }
         }
-        val CREATE_TABLE = UserLocalRepository().createTable()
-        db.execSQL(CREATE_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        val DROP_TABLE = "DROP TABLE IF EXISTS `users`"
-        db.execSQL(DROP_TABLE)
-        onCreate(db)
+
     }
 
     companion object {

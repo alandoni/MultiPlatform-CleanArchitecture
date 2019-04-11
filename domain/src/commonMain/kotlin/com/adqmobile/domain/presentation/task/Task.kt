@@ -2,6 +2,7 @@ package com.adqmobile.domain.presentation.task
 
 import com.adqmobile.domain.Log
 import com.adqmobile.domain.entities.IEntity
+import com.adqmobile.domain.getIODispatcher
 import com.adqmobile.domain.getMainDispatcher
 import com.adqmobile.domain.usecases.UseCase
 import kotlinx.coroutines.*
@@ -14,17 +15,18 @@ open class Task<U: IEntity, V: IEntity>(
 
     fun execute(param: U) : Job {
         var result : V? = null
-        val job = GlobalScope.launch(getMainDispatcher()) {
+        val job = GlobalScope.launch(getIODispatcher()) {
             try {
                 Log.d("Going to call use case")
                 result = useCase.execute(param)
                 //callBack?.onFinish(result)
             } catch (e: Exception) {
+                print(e)
                 error = e
             }
-        }
-        job.invokeOnCompletion {
-            onPostExecute(result)
+            launch(getMainDispatcher()) {
+                onPostExecute(result)
+            }
         }
         return job
     }

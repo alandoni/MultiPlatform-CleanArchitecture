@@ -17,3 +17,4 @@ expect object Log{
 }
 
 expect fun getMainDispatcher(): CoroutineDispatcher
+expect fun getIODispatcher(): CoroutineDispatcher

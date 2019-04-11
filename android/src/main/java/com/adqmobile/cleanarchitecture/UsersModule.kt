@@ -1,23 +1,36 @@
 package com.adqmobile.cleanarchitecture
 
 import android.app.Activity
-import com.adqmobile.cleanarchitecture.data.UserRepositoryImpl
+import com.adqmobile.cleanarchitecture.data.Database
+import com.adqmobile.cleanarchitecture.data.HttpRequest
+import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.presentation.LoginPresenter
-import com.adqmobile.domain.repositories.user.UserRepository
+import com.adqmobile.domain.repositories.user.UserLocalRepository
+import com.adqmobile.domain.repositories.user.UserRemoteRepository
 import com.adqmobile.domain.usecases.LoginUseCase
 import dagger.Module
 import dagger.Provides
+import javax.inject.Inject
 
 @Module(includes = [ContextModule::class])
-class UsersModule(private val activity: Activity) {
+class UsersModule @Inject constructor(
+    private val activity: Activity,
+    private val database: Database,
+    private val httpRequest: HttpRequest<LoginRequestEntity>) {
+
     @Provides
     fun providesLoginUseCase(): LoginUseCase {
-        return LoginUseCase(providesUserRepository())
+        return LoginUseCase(providesUserLocalRepository(), providesUserRemoteRepository())
     }
 
     @Provides
-    fun providesUserRepository(): UserRepository {
-        return UserRepositoryImpl(activity)
+    fun providesUserLocalRepository(): UserLocalRepository {
+        return UserLocalRepository(database)
+    }
+
+    @Provides
+    fun providesUserRemoteRepository(): UserRemoteRepository {
+        return UserRemoteRepository(httpRequest)
     }
 
     @Provides

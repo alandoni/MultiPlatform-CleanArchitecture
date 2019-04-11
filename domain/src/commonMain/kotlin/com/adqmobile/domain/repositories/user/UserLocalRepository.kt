@@ -18,19 +18,18 @@ class UserLocalRepository(private val database: AbstractDatabase) {
     }
 
     fun insert(userEntity: UserEntity): Int {
-        createTable()
         return database.runStatement("INSERT INTO `users` (name, email, password) VALUES (?, ?, ?);",
             userEntity.name, userEntity.email, userEntity.password)
     }
 
     fun selectByID(id: Int): UserEntity? {
-        val list = database.executeSelectQuery("SELECT * FROM `users` WHERE `users`.`id` = ?;", id)
+        val list = database.executeSelectQuery("SELECT * FROM `users` WHERE `users`.`id` = ?;", id.toString())
         val users = convert(list) ?: return null
         return users[0]
     }
 
     fun delete(id: Int): Int {
-        return database.runStatement("DELETE FROM `users` WHERE `users`.`id` = ?;", id)
+        return database.runStatement("DELETE FROM `users` WHERE `users`.`id` = ?;", id.toString())
     }
 
     fun convert(list: List<Map<String, Any?>>?): List<UserEntity>? {

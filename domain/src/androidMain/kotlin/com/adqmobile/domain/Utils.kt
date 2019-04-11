@@ -24,3 +24,7 @@ actual object Log{
 actual fun getMainDispatcher(): CoroutineDispatcher {
     return Dispatchers.Main
 }
+
+actual fun getIODispatcher(): CoroutineDispatcher {
+    return Dispatchers.IO
+}

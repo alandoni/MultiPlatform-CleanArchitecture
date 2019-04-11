@@ -18,7 +18,7 @@ class GetUserApi(private val loginRequest: LoginRequestEntity,
     }
 
     override fun getMethod(): HttpMethod {
-        return HttpMethod.GET
+        return HttpMethod.POST
     }
 
     override fun execute(): Map<String, Any?>? {
