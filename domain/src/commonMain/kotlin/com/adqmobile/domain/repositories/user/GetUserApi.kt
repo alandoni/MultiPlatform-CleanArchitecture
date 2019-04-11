@@ -1,8 +1,6 @@
 package com.adqmobile.domain.repositories.user
 
 import com.adqmobile.domain.entities.LoginRequestEntity
-import com.adqmobile.domain.entities.LoginResponseEntity
-import com.adqmobile.domain.entities.UserEntity
 import com.adqmobile.domain.repositories.HttpMethod
 import com.adqmobile.domain.repositories.IApi
 import com.adqmobile.domain.repositories.Request

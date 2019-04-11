@@ -4,12 +4,12 @@ import com.adqmobile.domain.repositories.user.UserLocalRepository
 
 class DatabaseInitializer(private val database: AbstractDatabase) {
 
-    fun onCreate() {
-        UserLocalRepository(database).createTable()
+    fun onCreate(): Array<String> {
+        return arrayOf(UserLocalRepository(database).createTableQuery())
     }
 
-    fun onUpgrade(oldVersion: Int, newVersion: Int): Boolean {
-        return oldVersion != newVersion
+    fun onUpgrade(oldVersion: Int, newVersion: Int): Array<String>? {
+        return null
     }
 
     fun getDatabaseVersion(): Int {

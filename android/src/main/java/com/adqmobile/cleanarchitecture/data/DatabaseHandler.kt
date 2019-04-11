@@ -18,16 +18,24 @@ class DatabaseHandler @Inject constructor(
 
     override fun onCreate(db: SQLiteDatabase) {
         if (ContextCompat.checkSelfPermission(context.applicationContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(context as Activity,
+            /*if (ActivityCompat.shouldShowRequestPermissionRationale(context as Activity,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 return
-            }
+            }*/
         }
-        databaseInitializer.onCreate()
+        val queries = databaseInitializer.onCreate()
+        for (query in queries) {
+            db.execSQL(query)
+        }
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        databaseInitializer.onUpgrade(oldVersion, newVersion)
+        val queries = databaseInitializer.onUpgrade(oldVersion, newVersion)
+        if (queries != null) {
+            for (query in queries) {
+                db.execSQL(query)
+            }
+        }
     }
 
     companion object {

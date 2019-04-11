@@ -45,7 +45,6 @@ class LoginUseCase constructor(
 
         val entity = remoteRepository.getByEmail(param)
         return if (entity != null) {
-            localRepository.createTable()
             val id = localRepository.insert(entity)
             val entityNew = localRepository.selectByID(id)
             LoginResponseEntity(true, entityNew.toString())

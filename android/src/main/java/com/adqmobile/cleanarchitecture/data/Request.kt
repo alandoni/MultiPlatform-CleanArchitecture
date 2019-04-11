@@ -27,7 +27,6 @@ class HttpRequest<U: Entity>: Request<U> {
                 }
             }
             if (api.getBody() != null) {
-                Log.d(api.getBody().toString())
                 insertBody(api.getBody().toString(), urlConnection)
             }
             urlConnection.connect()
@@ -69,7 +68,6 @@ class HttpRequest<U: Entity>: Request<U> {
     override fun execute(api: IApi<U>): Map<String, String?>? {
         val urlConnection = connect(api)
         val resultString = readResponse(urlConnection)
-        Log.d(resultString)
         urlConnection.disconnect()
         val type = object : TypeToken<Map<String, String>>(){}.type
         return Gson().fromJson(resultString, type)
