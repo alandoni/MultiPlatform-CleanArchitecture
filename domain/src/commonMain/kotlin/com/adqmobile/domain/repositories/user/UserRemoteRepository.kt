@@ -9,14 +9,6 @@ class UserRemoteRepository(private val request: Request<LoginRequestEntity>): IR
 
     fun getByEmail(login: LoginRequestEntity): UserEntity? {
         val userMap = GetUserApi(login, request).execute()?: return null
-        return convert(userMap)
-    }
-
-    fun convert(userMap: Map<String, Any?>): UserEntity {
-        return UserEntity(
-            userMap["name"] as String,
-            userMap["email"] as String,
-            userMap["password"] as String
-        )
+        return UserEntity.convert(userMap)
     }
 }

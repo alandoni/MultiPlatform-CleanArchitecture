@@ -14,12 +14,12 @@ class HttpRequest: NSObject, Request {
     func execute(api: IApi) -> [String : Any]? {
         do {
             NSLog("Requesting")
-            let url = URL(string: "http://192.168.3.102:3000/api/\(api.getUrl())/")!
+            let url = URL(string: "http://192.168.0.16:3000/api/\(api.getUrl())/")!
             var request = URLRequest(url: url)
             request.httpMethod = api.getMethod().name
             
             if (api.getBody() != nil) {
-                request.httpBody = try JSON(rawValue: api.getBody()!)?.rawData()
+                //request.httpBody = 
             }
             
             let semaphore = DispatchSemaphore(value: 0)
@@ -38,6 +38,7 @@ class HttpRequest: NSObject, Request {
             NSLog("Returning JSON")
             return json?.dictionaryObject
         } catch {
+            print(error)
             return nil
         }
     }

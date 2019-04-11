@@ -17,7 +17,7 @@ class HttpRequest<U: IEntity>: Request<U> {
         var urlConnection : HttpURLConnection? = null
 
         try {
-            val url = URL("http://192.168.0.13:3000/api/" + api.getUrl() + "/")
+            val url = URL("http://192.168.0.16:3000/api/" + api.getUrl() + "/")
             urlConnection = url.openConnection() as HttpURLConnection
             urlConnection.requestMethod = api.getMethod().toString()
             if (api.getHeaders() != null) {
@@ -65,7 +65,7 @@ class HttpRequest<U: IEntity>: Request<U> {
         return buffer.toString()
     }
 
-    override fun execute(api: IApi<U>): Map<String, Any?>? {
+    override fun execute(api: IApi<U>): Map<String, String?>? {
         val urlConnection = connect(api)
         val resultString = readResponse(urlConnection)
         Log.d(resultString)

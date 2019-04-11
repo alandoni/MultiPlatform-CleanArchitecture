@@ -32,22 +32,14 @@ class UserLocalRepository(private val database: AbstractDatabase) {
         return database.runStatement("DELETE FROM `users` WHERE `users`.`id` = ?;", id.toString())
     }
 
-    fun convert(list: List<Map<String, Any?>>?): List<UserEntity>? {
+    fun convert(list: List<Map<String, String?>>?): List<UserEntity>? {
         if (list == null) {
             return null
         }
         val newList = mutableListOf<UserEntity>()
-        for (userMap: Map<String, Any?> in list) {
-            newList.add(convert(userMap))
+        for (userMap: Map<String, String?> in list) {
+            newList.add(UserEntity.convert(userMap))
         }
         return newList
-    }
-
-    fun convert(userMap: Map<String, Any?>): UserEntity {
-        return UserEntity(
-            userMap["name"] as String,
-            userMap["email"] as String,
-            userMap["password"] as String
-        )
     }
 }

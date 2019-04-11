@@ -30,20 +30,19 @@ class Database: AbstractDatabase {
             var bindings: [Binding] = [];
             let it = params.iterator()
             while (it.hasNext()) {
-                bindings.append(it.next() as String)
+                bindings.append(it.next() as! String)
             }
             
             let statement = try self.db!.prepare(sql, bindings)
-            var list: Array<[String : Any]> = Array()
+            var list: Array<[String : String?]> = Array()
             while (try statement.step()) {
+                var map : [String : String?] = [:]
                 for columnName in statement.columnNames {
-                    var map : [String : Any] = [:]
                     let columnIndex: Int = statement.columnNames.firstIndex(of: "name")!
-                    let blob = statement.row[columnIndex] as String
-                    
-                    map[columnName] = blob
-                    list.append(map)
+                    let value = statement.row[columnIndex] as String
+                    map[columnName] = value
                 }
+                list.append(map)
             }
             return list
         } catch {

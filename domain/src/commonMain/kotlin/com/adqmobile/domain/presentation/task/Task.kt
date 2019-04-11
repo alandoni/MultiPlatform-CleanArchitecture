@@ -19,13 +19,13 @@ open class Task<U: IEntity, V: IEntity>(
             try {
                 Log.d("Going to call use case")
                 result = useCase.execute(param)
-                //callBack?.onFinish(result)
             } catch (e: Exception) {
                 print(e)
                 error = e
-            }
-            launch(getMainDispatcher()) {
-                onPostExecute(result)
+            } finally {
+                launch(getMainDispatcher()) {
+                    onPostExecute(result)
+                }
             }
         }
         return job

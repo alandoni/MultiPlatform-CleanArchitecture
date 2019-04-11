@@ -376,7 +376,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -389,7 +389,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A1B10A5C469C4A81C2031CA2 /* [CP] Check Pods Manifest.lock */ = {
