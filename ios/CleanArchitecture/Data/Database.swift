@@ -20,32 +20,39 @@ class Database: AbstractDatabase {
         do {
             self.db = try Connection(dbPath, readonly: false)
             let databaseInitializer = DatabaseInitializer(database: self)
-            
-            let currentVersion = self.db!.userVersion
-            NSLog("\(self.db!.userVersion)")
-            databaseInitializer.onCreate()
-            if (databaseInitializer.onUpgrade(oldVersion: currentVersion, newVersion: self.DATABASE_VERSION)) {
-                 self.db!.userVersion = self.DATABASE_VERSION
-                NSLog("\(self.db!.userVersion)")
-            }
-            
+            self.onCreate(databaseInitializer: databaseInitializer)
+            self.onUpgrade(databaseInitializer: databaseInitializer)
         } catch {
             NSLog(error.localizedDescription)
         }
         return self
     }
     
+    func onCreate(databaseInitializer: DatabaseInitializer) {
+        let queries = databaseInitializer.onCreate().iterator()
+        while (queries.hasNext()) {
+            runStatement(sql: queries.next() as! String, params: nil)
+        }
+    }
+    
+    func onUpgrade(databaseInitializer: DatabaseInitializer) {
+        let currentVersion = self.db!.userVersion
+        NSLog("\(self.db!.userVersion)")
+        
+        let queries = databaseInitializer.onUpgrade(oldVersion: currentVersion, newVersion: self.DATABASE_VERSION)
+        if (queries != nil) {
+            let it = queries!.iterator()
+            while (it.hasNext()) {
+                runStatement(sql: it.next() as! String, params: nil)
+            }
+            self.db!.userVersion = self.DATABASE_VERSION
+            NSLog("\(self.db!.userVersion)")
+        }
+    }
+    
     override func executeSelectQuery(sql: String, params: KotlinArray?) -> [[String : Any]]? {
         do {
-            var bindings: [Binding] = [];
-            if (params != nil) {
-                let it = params!.iterator()
-                while (it.hasNext()) {
-                    bindings.append(it.next() as! String)
-                }
-            }
-            NSLog("Executing SQL: %@ with %@", sql, bindings)
-            let statement = try self.db!.prepare(sql, bindings)
+            let statement = try self.db!.prepare(sql, getParams(params: params))
             var list: Array<[String : Any]> = Array()
             while (try statement.step()) {
                 var map : [String : Any] = [:]
@@ -63,21 +70,26 @@ class Database: AbstractDatabase {
         }
     }
     
-    override func runStatement(sql: String, params: KotlinArray) -> Int32 {
+    override func runStatement(sql: String, params: KotlinArray?) -> Int32 {
         do {
-            var bindings: [Binding] = [];
-            let it = params.iterator()
-            while (it.hasNext()) {
-                bindings.append(it.next() as! String)
-            }
-            NSLog("Running SQL: %@ with %@", sql, bindings)
-            let stmt = try self.db!.prepare(sql, bindings)
+            let stmt = try self.db!.prepare(sql, getParams(params: params))
             try stmt.run()
             return Int32(truncatingIfNeeded: self.db!.lastInsertRowid)
         } catch {
             NSLog(error.localizedDescription)
             return -1
         }
+    }
+    
+    func getParams(params: KotlinArray?) -> [Binding] {
+        var bindings: [Binding] = [];
+        if (params != nil) {
+            let it = params!.iterator()
+            while (it.hasNext()) {
+                bindings.append(it.next() as! String)
+            }
+        }
+        return bindings
     }
 }
 
