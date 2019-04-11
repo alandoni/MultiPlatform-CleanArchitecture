@@ -2,9 +2,10 @@ package com.adqmobile.domain.repositories.user
 
 import com.adqmobile.domain.entities.UserEntity
 import com.adqmobile.domain.repositories.AbstractDatabase
+import com.adqmobile.domain.repositories.LocalRepository
 
-class UserLocalRepository(private val database: AbstractDatabase) {
-    fun createTable() {
+class UserLocalRepository(private val database: AbstractDatabase): LocalRepository {
+    override fun createTable() {
         database.runStatement("CREATE TABLE IF NOT EXISTS `users` (" +
                 "`id` INTEGER PRIMARY KEY," +
                 "`name` TEXT," +

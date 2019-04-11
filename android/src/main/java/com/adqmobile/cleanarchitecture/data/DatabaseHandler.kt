@@ -8,10 +8,13 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.adqmobile.domain.repositories.user.UserLocalRepository
+import com.adqmobile.domain.repositories.DatabaseInitializer
 import javax.inject.Inject
 
-class DatabaseHandler @Inject constructor(private val context: Context): SQLiteOpenHelper(context, DatabaseHandler.DB_NAME, null, DatabaseHandler.DB_VERSION) {
+class DatabaseHandler @Inject constructor(
+    private val context: Context,
+    private val databaseInitializer: DatabaseInitializer
+): SQLiteOpenHelper(context, DatabaseHandler.DB_NAME, null, DatabaseHandler.DB_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
         if (ContextCompat.checkSelfPermission(context.applicationContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -20,10 +23,11 @@ class DatabaseHandler @Inject constructor(private val context: Context): SQLiteO
                 return
             }
         }
+        databaseInitializer.onCreate()
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-
+        databaseInitializer.onUpgrade(oldVersion, newVersion)
     }
 
     companion object {

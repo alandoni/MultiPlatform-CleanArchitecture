@@ -13,32 +13,44 @@ import SQLite
 class Database: AbstractDatabase {
     
     var db: Connection?
+    let DATABASE_VERSION: Int32 = 1
     
     func initDatabase() -> Database {
         let dbPath = Bundle.main.bundleURL.deletingLastPathComponent().appendingPathComponent("db.sqlite").absoluteString
         do {
-            self.db = try Connection(dbPath)
+            self.db = try Connection(dbPath, readonly: false)
+            let databaseInitializer = DatabaseInitializer(database: self)
+            
+            let currentVersion = self.db!.userVersion
+            NSLog("\(self.db!.userVersion)")
+            databaseInitializer.onCreate()
+            if (databaseInitializer.onUpgrade(oldVersion: currentVersion, newVersion: self.DATABASE_VERSION)) {
+                 self.db!.userVersion = self.DATABASE_VERSION
+                NSLog("\(self.db!.userVersion)")
+            }
+            
         } catch {
             NSLog(error.localizedDescription)
         }
         return self
     }
     
-    override func executeSelectQuery(sql: String, params: KotlinArray) -> [[String : Any]]? {
+    override func executeSelectQuery(sql: String, params: KotlinArray?) -> [[String : Any]]? {
         do {
-            NSLog("Executing SQL %@", sql)
             var bindings: [Binding] = [];
-            let it = params.iterator()
-            while (it.hasNext()) {
-                bindings.append(it.next() as! String)
+            if (params != nil) {
+                let it = params!.iterator()
+                while (it.hasNext()) {
+                    bindings.append(it.next() as! String)
+                }
             }
-            
+            NSLog("Executing SQL: %@ with %@", sql, bindings)
             let statement = try self.db!.prepare(sql, bindings)
-            var list: Array<[String : String?]> = Array()
+            var list: Array<[String : Any]> = Array()
             while (try statement.step()) {
-                var map : [String : String?] = [:]
+                var map : [String : Any] = [:]
                 for columnName in statement.columnNames {
-                    let columnIndex: Int = statement.columnNames.firstIndex(of: "name")!
+                    let columnIndex: Int = statement.columnNames.firstIndex(of: columnName)!
                     let value = statement.row[columnIndex] as String
                     map[columnName] = value
                 }
@@ -58,7 +70,7 @@ class Database: AbstractDatabase {
             while (it.hasNext()) {
                 bindings.append(it.next() as! String)
             }
-            NSLog("Running SQL %@ %@", sql, bindings)
+            NSLog("Running SQL: %@ with %@", sql, bindings)
             let stmt = try self.db!.prepare(sql, bindings)
             try stmt.run()
             return Int32(truncatingIfNeeded: self.db!.lastInsertRowid)
@@ -66,5 +78,12 @@ class Database: AbstractDatabase {
             NSLog(error.localizedDescription)
             return -1
         }
+    }
+}
+
+extension Connection {
+    public var userVersion: Int32 {
+        get { return try! Int32(scalar("PRAGMA user_version") as! Int64) }
+        set { try! run("PRAGMA user_version = \(newValue)") }
     }
 }
