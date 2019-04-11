@@ -9,20 +9,13 @@ import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.adqmobile.domain.repositories.DatabaseInitializer
-import javax.inject.Inject
 
-class DatabaseHandler @Inject constructor(
-    private val context: Context,
+class DatabaseHandler constructor(
+    context: Context,
     private val databaseInitializer: DatabaseInitializer
 ): SQLiteOpenHelper(context, DatabaseHandler.DB_NAME, null, DatabaseHandler.DB_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        if (ContextCompat.checkSelfPermission(context.applicationContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            /*if (ActivityCompat.shouldShowRequestPermissionRationale(context as Activity,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                return
-            }*/
-        }
         val queries = databaseInitializer.onCreate()
         for (query in queries) {
             db.execSQL(query)
@@ -41,5 +34,13 @@ class DatabaseHandler @Inject constructor(
     companion object {
         private val DB_VERSION = 1
         private val DB_NAME = "db.db"
+
+        fun requestPermissionIfNeeded(activity: Activity): Boolean {
+            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                return ActivityCompat.shouldShowRequestPermissionRationale(activity,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+            return true
+        }
     }
 }

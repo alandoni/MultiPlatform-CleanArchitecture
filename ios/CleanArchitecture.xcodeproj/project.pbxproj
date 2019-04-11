@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		071552EC224049DD000298EC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071552EB224049DD000298EC /* BaseViewController.swift */; };
+		0728E68C225FDB05006D3E92 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0728E68B225FDB05006D3E92 /* DependencyInjection.swift */; };
 		07A61FC422403ACC008FD7D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FC322403ACC008FD7D5 /* AppDelegate.swift */; };
 		07A61FC622403ACC008FD7D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FC522403ACC008FD7D5 /* LoginViewController.swift */; };
 		07A61FC922403ACC008FD7D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A61FC722403ACC008FD7D5 /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		071552EB224049DD000298EC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0728E68B225FDB05006D3E92 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		07A61FC022403ACC008FD7D5 /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A61FC322403ACC008FD7D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07A61FC522403ACC008FD7D5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				07A61FCC22403ACE008FD7D5 /* LaunchScreen.storyboard */,
 				07A61FCF22403ACE008FD7D5 /* Info.plist */,
 				071552EB224049DD000298EC /* BaseViewController.swift */,
+				0728E68B225FDB05006D3E92 /* DependencyInjection.swift */,
 			);
 			path = CleanArchitecture;
 			sourceTree = "<group>";
@@ -376,9 +379,11 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -386,10 +391,12 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A1B10A5C469C4A81C2031CA2 /* [CP] Check Pods Manifest.lock */ = {
@@ -462,6 +469,7 @@
 			files = (
 				C16BE4C6225E6A72004B7961 /* Database.swift in Sources */,
 				07A61FC622403ACC008FD7D5 /* LoginViewController.swift in Sources */,
+				0728E68C225FDB05006D3E92 /* DependencyInjection.swift in Sources */,
 				07A61FC422403ACC008FD7D5 /* AppDelegate.swift in Sources */,
 				C16BE4C4225E66CB004B7961 /* Request.swift in Sources */,
 				071552EC224049DD000298EC /* BaseViewController.swift in Sources */,

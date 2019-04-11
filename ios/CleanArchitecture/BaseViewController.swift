@@ -19,8 +19,4 @@ class BaseViewController<T: IPresenter>: UIViewController, IBaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
 }

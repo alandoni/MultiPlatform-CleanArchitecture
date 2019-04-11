@@ -7,6 +7,8 @@ target 'CleanArchitecture' do
 
   pod 'SwiftyJSON', '~> 4.0'
   pod 'SQLite.swift', '~> 0.11.5'
+  pod 'Swinject'
+  pod 'SwinjectStoryboard'
   # Pods for CleanArchitecture
 
   target 'CleanArchitectureTests' do

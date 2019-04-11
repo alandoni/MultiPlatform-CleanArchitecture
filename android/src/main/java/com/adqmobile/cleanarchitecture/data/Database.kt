@@ -3,18 +3,17 @@ package com.adqmobile.cleanarchitecture.data
 import android.content.Context
 import com.adqmobile.domain.repositories.AbstractDatabase
 import com.adqmobile.domain.repositories.DatabaseInitializer
-import javax.inject.Inject
 
-class Database @Inject constructor(context: Context) : AbstractDatabase() {
+class Database constructor(context: Context) : AbstractDatabase() {
 
     private val db: DatabaseHandler = DatabaseHandler(context, DatabaseInitializer(this))
 
     override fun executeSelectQuery(sql: String, vararg params: String?): List<Map<String, String?>>? {
         val cursor = db.readableDatabase.rawQuery(sql, params)
 
-        var list: ArrayList<Map<String, String?>> = ArrayList()
+        val list: ArrayList<Map<String, String?>> = ArrayList()
         while (cursor.moveToNext()) {
-            var value: HashMap<String, String?> = HashMap()
+            val value: HashMap<String, String?> = HashMap()
             for (column in cursor.columnNames) {
                 value[column] = cursor.getString(cursor.getColumnIndex(column))
             }
