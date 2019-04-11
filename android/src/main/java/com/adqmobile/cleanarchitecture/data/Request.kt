@@ -1,7 +1,7 @@
 package com.adqmobile.cleanarchitecture.data
 
 import com.adqmobile.domain.Log
-import com.adqmobile.domain.entities.IEntity
+import com.adqmobile.domain.entities.Entity
 import com.adqmobile.domain.repositories.IApi
 import com.adqmobile.domain.repositories.Request
 import com.google.gson.Gson
@@ -11,13 +11,13 @@ import java.net.HttpURLConnection
 import java.net.URL
 import com.google.gson.reflect.TypeToken
 
-class HttpRequest<U: IEntity>: Request<U> {
+class HttpRequest<U: Entity>: Request<U> {
 
     private fun connect(api: IApi<U>) : HttpURLConnection {
         var urlConnection : HttpURLConnection? = null
 
         try {
-            val url = URL("http://192.168.0.16:3000/api/" + api.getUrl() + "/")
+            val url = URL("http://192.168.3.102:3000/api/" + api.getUrl() + "/")
             urlConnection = url.openConnection() as HttpURLConnection
             urlConnection.requestMethod = api.getMethod().toString()
             if (api.getHeaders() != null) {
@@ -27,7 +27,8 @@ class HttpRequest<U: IEntity>: Request<U> {
                 }
             }
             if (api.getBody() != null) {
-                insertBody(Gson().toJson(api.getBody()), urlConnection)
+                Log.d(api.getBody().toString())
+                insertBody(api.getBody().toString(), urlConnection)
             }
             urlConnection.connect()
         } catch (e: Exception) {
@@ -35,7 +36,7 @@ class HttpRequest<U: IEntity>: Request<U> {
             urlConnection?.disconnect()
             throw e
         }
-        return urlConnection!!
+        return urlConnection
     }
 
     private fun insertBody(body: String, urlConnection: HttpURLConnection) {

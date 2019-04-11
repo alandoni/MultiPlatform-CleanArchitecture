@@ -1,8 +1,8 @@
 package com.adqmobile.domain.repositories
 
-import com.adqmobile.domain.entities.IEntity
+import com.adqmobile.domain.entities.Entity
 
-interface IApi<U: IEntity> {
+interface IApi<U: Entity> {
     fun getUrl(): String
     fun getBody(): U?
     fun getHeaders(): Map<String, String>? {

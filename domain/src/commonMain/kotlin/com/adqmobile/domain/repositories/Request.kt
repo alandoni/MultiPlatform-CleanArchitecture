@@ -1,7 +1,7 @@
 package com.adqmobile.domain.repositories
 
-import com.adqmobile.domain.entities.IEntity
+import com.adqmobile.domain.entities.Entity
 
-interface Request<U: IEntity> {
+interface Request<U: Entity> {
     fun execute(api: IApi<U>): Map<String, String?>?
 }

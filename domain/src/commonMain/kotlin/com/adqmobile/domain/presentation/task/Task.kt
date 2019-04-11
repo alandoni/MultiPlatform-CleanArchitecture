@@ -1,13 +1,13 @@
 package com.adqmobile.domain.presentation.task
 
 import com.adqmobile.domain.Log
-import com.adqmobile.domain.entities.IEntity
+import com.adqmobile.domain.entities.Entity
 import com.adqmobile.domain.getIODispatcher
 import com.adqmobile.domain.getMainDispatcher
 import com.adqmobile.domain.usecases.UseCase
 import kotlinx.coroutines.*
 
-open class Task<U: IEntity, V: IEntity>(
+open class Task<U: Entity, V: Entity>(
     private val useCase: UseCase<U, V>,
     private val callBack: CallBack<V>?
 ) {
