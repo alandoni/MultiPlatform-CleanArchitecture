@@ -1,6 +1,6 @@
 package com.adqmobile.domain.repositories
 
-abstract class Api {
+abstract class BaseApi {
     abstract fun getUrl(): String
     abstract fun getBody(): String?
     open fun getHeaders(): Map<String, String>? {
@@ -8,6 +8,9 @@ abstract class Api {
     }
     abstract fun getMethod(): HttpMethod
     protected abstract fun execute(): String?
+    open fun onError(error: Throwable) {
+        throw error
+    }
 }
 
 enum class HttpMethod {

@@ -1,14 +1,14 @@
-package com.adqmobile.domain.presentation.task
+package com.adqmobile.presentation.task
 
 import com.adqmobile.domain.Log
-import com.adqmobile.domain.entities.Entity
+import com.adqmobile.domain.entities.BaseEntity
 import com.adqmobile.domain.getIODispatcher
 import com.adqmobile.domain.getMainDispatcher
-import com.adqmobile.domain.usecases.UseCase
+import com.adqmobile.domain.usecases.BaseUseCase
 import kotlinx.coroutines.*
 
-open class Task<U: Entity, V: Entity>(
-    private val useCase: UseCase<U, V>,
+open class Task<U: BaseEntity, V: BaseEntity>(
+    private val useCase: BaseUseCase<U, V>,
     private val callBack: CallBack<V>?
 ) {
     private lateinit var error : Exception

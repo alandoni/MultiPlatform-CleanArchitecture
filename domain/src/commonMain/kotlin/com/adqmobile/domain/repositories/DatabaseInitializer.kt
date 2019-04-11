@@ -1,6 +1,6 @@
 package com.adqmobile.domain.repositories
 
-import com.adqmobile.domain.repositories.user.UserLocalRepository
+import com.adqmobile.data.user.UserLocalRepository
 
 class DatabaseInitializer(private val database: AbstractDatabase) {
 
@@ -13,11 +13,11 @@ class DatabaseInitializer(private val database: AbstractDatabase) {
     }
 
     fun getDatabaseVersion(): Int {
-        val map = database.executeSelectQuery("PRAGMA user_version")!![0]
+        val map = database.readFromDB("PRAGMA user_version")!![0]
         return map["user_version"]!!.toInt()
     }
 
     fun setDatabaseVersion(version: Int) {
-        database.runStatement("PRAGMA user_version = $version")
+        database.writeIntoDB("PRAGMA user_version = $version")
     }
 }

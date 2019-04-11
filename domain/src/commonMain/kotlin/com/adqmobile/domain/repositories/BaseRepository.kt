@@ -1,3 +1,3 @@
 package com.adqmobile.domain.repositories
 
-interface IRepository
+interface BaseRepository

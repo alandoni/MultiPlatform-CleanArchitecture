@@ -8,7 +8,7 @@ data class UserEntity(
     var name: String,
     var email: String,
     var password: String
-): Entity {
+): BaseEntity {
 
     override fun toString(): String {
         return Json.stringify(serializer(), this)

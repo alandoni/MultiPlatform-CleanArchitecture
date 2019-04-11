@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 data class LoginResponseEntity(
     var success: Boolean,
     var error: String?
-): Entity {
+): BaseEntity {
     override fun toString(): String {
         return Json.stringify(serializer(), this)
     }

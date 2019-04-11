@@ -10,8 +10,8 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.adqmobile.cleanarchitecture.BaseActivity
 import com.adqmobile.cleanarchitecture.R
-import com.adqmobile.domain.presentation.ILoginView
-import com.adqmobile.domain.presentation.LoginPresenter
+import com.adqmobile.presentation.LoginView
+import com.adqmobile.presentation.LoginPresenter
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -20,7 +20,7 @@ import org.koin.core.parameter.parametersOf
 /**
  * A login screen that offers login via email/password.
  */
-class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
+class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
 
     override val presenter: LoginPresenter by inject { parametersOf(this) }
 

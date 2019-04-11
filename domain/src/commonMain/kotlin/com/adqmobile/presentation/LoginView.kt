@@ -1,8 +1,6 @@
-package com.adqmobile.domain.presentation
+package com.adqmobile.presentation
 
-import com.adqmobile.domain.presentation.IBaseView
-
-interface ILoginView : IBaseView {
+interface LoginView : BaseView {
     fun getEmail() : String
     fun getPassword() : String
     fun onFail(error : String?)

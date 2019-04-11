@@ -1,4 +1,4 @@
-package com.adqmobile.domain.presentation.task
+package com.adqmobile.presentation.task
 
 interface CallBack<T> {
     fun onFinish(result: T?)

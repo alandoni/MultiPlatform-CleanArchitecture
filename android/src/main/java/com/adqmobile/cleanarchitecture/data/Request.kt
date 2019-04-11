@@ -1,15 +1,15 @@
 package com.adqmobile.cleanarchitecture.data
 
-import com.adqmobile.domain.repositories.Api
-import com.adqmobile.domain.repositories.Request
+import com.adqmobile.domain.repositories.BaseApi
+import com.adqmobile.domain.repositories.BaseRequest
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class HttpRequest: Request {
+class HttpRequest: BaseRequest {
 
-    private fun connect(api: Api) : HttpURLConnection {
+    private fun connect(api: BaseApi) : HttpURLConnection {
         var urlConnection : HttpURLConnection? = null
 
         try {
@@ -61,7 +61,7 @@ class HttpRequest: Request {
         return buffer.toString()
     }
 
-    override fun execute(api: Api): String {
+    override fun execute(api: BaseApi): String {
         val urlConnection = connect(api)
         val resultString = readResponse(urlConnection)
         urlConnection.disconnect()

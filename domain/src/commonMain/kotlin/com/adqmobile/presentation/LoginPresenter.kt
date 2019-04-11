@@ -1,20 +1,17 @@
-package com.adqmobile.domain.presentation
+package com.adqmobile.presentation
 
-import com.adqmobile.domain.presentation.IBaseView
-import com.adqmobile.domain.presentation.task.CallBack
-import com.adqmobile.domain.presentation.task.Task
+import com.adqmobile.presentation.task.CallBack
+import com.adqmobile.presentation.task.Task
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
-import com.adqmobile.domain.presentation.ILoginView
 import com.adqmobile.domain.usecases.LoginUseCase
-import com.adqmobile.domain.presentation.IPresenter
 
-class LoginPresenter constructor(private val loginUseCase: LoginUseCase) : IPresenter, CallBack<LoginResponseEntity> {
+class LoginPresenter constructor(private val loginUseCase: LoginUseCase) : BasePresenter, CallBack<LoginResponseEntity> {
 
-    private lateinit var view: ILoginView
+    private lateinit var view: LoginView
 
-    override fun attach(view: IBaseView) {
-        this.view = view as ILoginView
+    override fun attach(view: BaseView) {
+        this.view = view as LoginView
     }
 
     /**

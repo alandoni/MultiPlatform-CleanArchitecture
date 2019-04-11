@@ -8,7 +8,7 @@ class Database constructor(context: Context) : AbstractDatabase() {
 
     private val db: DatabaseHandler = DatabaseHandler(context, DatabaseInitializer(this))
 
-    override fun executeSelectQuery(sql: String, vararg params: String?): List<Map<String, String?>>? {
+    override fun readFromDB(sql: String, vararg params: String?): List<Map<String, String?>>? {
         val cursor = db.readableDatabase.rawQuery(sql, params)
 
         val list: ArrayList<Map<String, String?>> = ArrayList()
@@ -24,7 +24,7 @@ class Database constructor(context: Context) : AbstractDatabase() {
         return list
     }
 
-    override fun runStatement(sql: String, vararg params: String?): Int {
+    override fun writeIntoDB(sql: String, vararg params: String?): Int {
         db.writableDatabase.execSQL(sql, params)
         val cursorInsert = db.readableDatabase.rawQuery("select last_insert_rowid()", null)
         cursorInsert!!.moveToNext()

@@ -4,13 +4,13 @@ import com.adqmobile.domain.Throws
 import com.adqmobile.domain.ValidationException
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
-import com.adqmobile.domain.repositories.user.UserLocalRepository
-import com.adqmobile.domain.repositories.user.UserRemoteRepository
+import com.adqmobile.data.user.UserLocalRepository
+import com.adqmobile.data.user.UserRemoteRepository
 
 class LoginUseCase constructor(
     private val localRepository: UserLocalRepository,
     private val remoteRepository: UserRemoteRepository
-): UseCase<LoginRequestEntity, LoginResponseEntity> {
+): BaseUseCase<LoginRequestEntity, LoginResponseEntity> {
 
     private fun isEmptyOrNull(string: String?): Boolean {
         return string == null || string.isEmpty()

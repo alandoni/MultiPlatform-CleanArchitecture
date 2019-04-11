@@ -3,10 +3,10 @@ package com.adqmobile.cleanarchitecture
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.adqmobile.cleanarchitecture.data.DatabaseHandler
-import com.adqmobile.domain.presentation.IBaseView
-import com.adqmobile.domain.presentation.IPresenter
+import com.adqmobile.presentation.BaseView
+import com.adqmobile.presentation.BasePresenter
 
-abstract class BaseActivity<T: IPresenter> : AppCompatActivity(), IBaseView {
+abstract class BaseActivity<T: BasePresenter> : AppCompatActivity(), BaseView {
 
     abstract val presenter: T
 
