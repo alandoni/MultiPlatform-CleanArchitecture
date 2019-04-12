@@ -28,7 +28,7 @@ class LoginViewController: BaseViewController<LoginPresenter>, LoginView {
     }
 
     @IBAction func didTouchLogin(_ sender: Any) {
-        presenter!.attemptLogin()
+        presenter!.onClickLoginButton()
     }
     
     func getEmail() -> String {
@@ -47,7 +47,7 @@ class LoginViewController: BaseViewController<LoginPresenter>, LoginView {
     
     func onSuccess() {
         errorLabel.isHidden = false
-        loginButtonTopConstraint.constant = LOGIN_BUTTON_WITH_ERROR_TOP_CONSTRAINT_VALUE//LOGIN_BUTTON_DEFAULT_TOP_CONSTRAINT_VALUE
+        loginButtonTopConstraint.constant = LOGIN_BUTTON_DEFAULT_TOP_CONSTRAINT_VALUE
     }
     
     func showProgress() {

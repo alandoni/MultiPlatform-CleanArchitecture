@@ -3,7 +3,7 @@ package com.adqmobile.cleanarchitecture
 import android.app.Application
 import com.adqmobile.cleanarchitecture.data.Database
 import com.adqmobile.cleanarchitecture.data.HttpRequest
-import com.adqmobile.presentation.LoginPresenter
+import com.adqmobile.presentation.LoginController
 import com.adqmobile.domain.repositories.AbstractDatabase
 import com.adqmobile.domain.repositories.BaseRequest
 import com.adqmobile.data.user.UserLocalRepository
@@ -19,7 +19,7 @@ val ApplicationModule = module {
 }
 
 val LoginModule = module {
-    factory { LoginPresenter(get()) }
+    factory { LoginController(get()) }
     factory { UserLocalRepository(get()) }
     factory { UserRemoteRepository(get()) }
     factory { LoginUseCase(get(), get()) }

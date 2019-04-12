@@ -11,18 +11,17 @@ import android.widget.TextView
 import com.adqmobile.cleanarchitecture.BaseActivity
 import com.adqmobile.cleanarchitecture.R
 import com.adqmobile.presentation.LoginView
-import com.adqmobile.presentation.LoginPresenter
+import com.adqmobile.presentation.LoginController
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
 
 
 /**
  * A login screen that offers login via email/password.
  */
-class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
+class LoginActivity : BaseActivity<LoginController>(), LoginView {
 
-    override val presenter: LoginPresenter by inject { parametersOf(this) }
+    override val presenter: LoginController by inject()
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.

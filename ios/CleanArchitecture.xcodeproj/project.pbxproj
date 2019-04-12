@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		071552EC224049DD000298EC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071552EB224049DD000298EC /* BaseViewController.swift */; };
 		0728E68C225FDB05006D3E92 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0728E68B225FDB05006D3E92 /* DependencyInjection.swift */; };
 		07A61FC422403ACC008FD7D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FC322403ACC008FD7D5 /* AppDelegate.swift */; };
 		07A61FC622403ACC008FD7D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FC522403ACC008FD7D5 /* LoginViewController.swift */; };
@@ -17,6 +16,8 @@
 		07A61FD922403ACE008FD7D5 /* CleanArchitectureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FD822403ACE008FD7D5 /* CleanArchitectureTests.swift */; };
 		07A61FE422403ACE008FD7D5 /* CleanArchitectureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FE322403ACE008FD7D5 /* CleanArchitectureUITests.swift */; };
 		B52AA8F85DECBE6838B0A9AA /* Pods_CleanArchitectureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */; };
+		C141B9E222610E2B003EF937 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B9E122610E2B003EF937 /* BaseViewController.swift */; };
+		C141B9E422611AAE003EF937 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B9E322611AAE003EF937 /* LoginPresenter.swift */; };
 		C16BE4C4225E66CB004B7961 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16BE4C3225E66CB004B7961 /* Request.swift */; };
 		C16BE4C6225E6A72004B7961 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16BE4C5225E6A72004B7961 /* Database.swift */; };
 		C1C3FCED2243D054004BFB29 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C3FCE72243D021004BFB29 /* main.framework */; };
@@ -57,7 +58,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		071552EB224049DD000298EC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0728E68B225FDB05006D3E92 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		07A61FC022403ACC008FD7D5 /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A61FC322403ACC008FD7D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +78,8 @@
 		B4BC6FE0EA7E18258D2FE147 /* Pods-CleanArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitecture.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture.release.xcconfig"; sourceTree = "<group>"; };
 		B70A8C2645A4386FF79262F5 /* Pods_CleanArchitectureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C141B9E122610E2B003EF937 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = ../../../../../.Trash/BaseViewController.swift; sourceTree = "<group>"; };
+		C141B9E322611AAE003EF937 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		C16BE4C3225E66CB004B7961 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		C16BE4C5225E6A72004B7961 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		C1C3FCE52243CAEB004BFB29 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../domain/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				07A61FC522403ACC008FD7D5 /* LoginViewController.swift */,
+				C141B9E322611AAE003EF937 /* LoginPresenter.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -159,7 +162,7 @@
 				07A61FCA22403ACE008FD7D5 /* Assets.xcassets */,
 				07A61FCC22403ACE008FD7D5 /* LaunchScreen.storyboard */,
 				07A61FCF22403ACE008FD7D5 /* Info.plist */,
-				071552EB224049DD000298EC /* BaseViewController.swift */,
+				C141B9E122610E2B003EF937 /* BaseViewController.swift */,
 				0728E68B225FDB05006D3E92 /* DependencyInjection.swift */,
 			);
 			path = CleanArchitecture;
@@ -379,7 +382,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
@@ -396,7 +399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A1B10A5C469C4A81C2031CA2 /* [CP] Check Pods Manifest.lock */ = {
@@ -469,10 +472,11 @@
 			files = (
 				C16BE4C6225E6A72004B7961 /* Database.swift in Sources */,
 				07A61FC622403ACC008FD7D5 /* LoginViewController.swift in Sources */,
+				C141B9E422611AAE003EF937 /* LoginPresenter.swift in Sources */,
 				0728E68C225FDB05006D3E92 /* DependencyInjection.swift in Sources */,
 				07A61FC422403ACC008FD7D5 /* AppDelegate.swift in Sources */,
 				C16BE4C4225E66CB004B7961 /* Request.swift in Sources */,
-				071552EC224049DD000298EC /* BaseViewController.swift in Sources */,
+				C141B9E222610E2B003EF937 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
