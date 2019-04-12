@@ -1,9 +1,21 @@
 package com.adqmobile.domain.repositories
 
+import com.adqmobile.domain.NetworkException
 import com.adqmobile.domain.entities.BaseEntity
 
-interface BaseRequest {
-    fun execute(api: BaseApi): String
+abstract class BaseRequest {
+
+    var error: NetworkException? = null
+
+    abstract fun execute(api: BaseApi): String
+
+    open fun onError(error: String?) {
+        if (error != null) {
+            this.error = NetworkException(error)
+        } else {
+            this.error = NetworkException("Unknown network error")
+        }
+    }
 }
 
 internal interface TypedRequest<U: BaseEntity> {

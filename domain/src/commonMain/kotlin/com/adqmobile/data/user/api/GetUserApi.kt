@@ -28,6 +28,9 @@ class GetUserApi(private val loginRequest: LoginRequestEntity,
 
     override fun request(): UserEntity? {
         val response = execute()
+        if (request.error != null) {
+            throw request.error!!
+        }
         return if (response != null) {
             UserEntity.fromJson(response)
         } else {

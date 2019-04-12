@@ -12,7 +12,7 @@ import main
 let LOGIN_BUTTON_DEFAULT_TOP_CONSTRAINT_VALUE: CGFloat = 20
 let LOGIN_BUTTON_WITH_ERROR_TOP_CONSTRAINT_VALUE: CGFloat = 61
 
-class LoginViewController: BaseViewController<LoginPresenter>, ILoginView {
+class LoginViewController: BaseViewController<LoginPresenter>, LoginView {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!

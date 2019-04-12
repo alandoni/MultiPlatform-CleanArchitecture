@@ -24,6 +24,7 @@ class Database: AbstractDatabase {
             self.onUpgrade(databaseInitializer: databaseInitializer)
         } catch {
             NSLog(error.localizedDescription)
+            self.onError(error: error.localizedDescription)
         }
         return self
     }
@@ -31,7 +32,7 @@ class Database: AbstractDatabase {
     func onCreate(databaseInitializer: DatabaseInitializer) {
         let queries = databaseInitializer.onCreate().iterator()
         while (queries.hasNext()) {
-            runStatement(sql: queries.next() as! String, params: nil)
+            self.writeIntoDB(sql: queries.next() as! String, params: nil)
         }
     }
     
@@ -43,14 +44,14 @@ class Database: AbstractDatabase {
         if (queries != nil) {
             let it = queries!.iterator()
             while (it.hasNext()) {
-                runStatement(sql: it.next() as! String, params: nil)
+                self.writeIntoDB(sql: it.next() as! String, params: nil)
             }
             self.db!.userVersion = self.DATABASE_VERSION
             NSLog("\(self.db!.userVersion)")
         }
     }
     
-    override func executeSelectQuery(sql: String, params: KotlinArray?) -> [[String : Any]]? {
+    override func readFromDB(sql: String, params: KotlinArray?) -> [[String : Any]]? {
         do {
             let statement = try self.db!.prepare(sql, getParams(params: params))
             var list: Array<[String : Any]> = Array()
@@ -66,17 +67,19 @@ class Database: AbstractDatabase {
             return list
         } catch {
             NSLog(error.localizedDescription)
+            self.onError(error: error.localizedDescription)
             return nil
         }
     }
     
-    override func runStatement(sql: String, params: KotlinArray?) -> Int32 {
+    override func writeIntoDB(sql: String, params: KotlinArray?) -> Int32 {
         do {
             let stmt = try self.db!.prepare(sql, getParams(params: params))
             try stmt.run()
             return Int32(truncatingIfNeeded: self.db!.lastInsertRowid)
         } catch {
             NSLog(error.localizedDescription)
+            self.onError(error: error.localizedDescription)
             return -1
         }
     }

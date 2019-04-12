@@ -7,7 +7,7 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class HttpRequest: BaseRequest {
+class HttpRequest(): BaseRequest() {
 
     private fun connect(api: BaseApi) : HttpURLConnection {
         var urlConnection : HttpURLConnection? = null

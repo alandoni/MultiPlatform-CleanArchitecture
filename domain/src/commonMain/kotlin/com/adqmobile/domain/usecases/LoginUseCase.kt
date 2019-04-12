@@ -1,11 +1,11 @@
 package com.adqmobile.domain.usecases
 
 import com.adqmobile.domain.Throws
-import com.adqmobile.domain.ValidationException
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
 import com.adqmobile.data.user.UserLocalRepository
 import com.adqmobile.data.user.UserRemoteRepository
+import com.adqmobile.domain.ValidationException
 
 class LoginUseCase constructor(
     private val localRepository: UserLocalRepository,
@@ -29,7 +29,6 @@ class LoginUseCase constructor(
         return password.length > 4
     }
 
-    @Throws
     override fun execute(param: LoginRequestEntity): LoginResponseEntity {
         // Check for a valid password, if the user entered one.
         if (isEmptyOrNull(param.password) || !isPasswordValid(param.password!!)) {
@@ -43,13 +42,17 @@ class LoginUseCase constructor(
             throw ValidationException("Invalid email")
         }
 
-        val entity = remoteRepository.getByEmail(param)
-        return if (entity != null) {
-            val id = localRepository.insert(entity)
-            val entityNew = localRepository.selectByID(id)
-            LoginResponseEntity(true, entityNew.toString())
-        } else {
-            LoginResponseEntity(false, "Invalid email")
+        try {
+            val entity = remoteRepository.getByEmail(param)
+            return if (entity != null) {
+                val id = localRepository.insert(entity)
+                val entityNew = localRepository.selectByID(id)
+                LoginResponseEntity(true, entityNew.toString())
+            } else {
+                LoginResponseEntity(false, "Invalid email")
+            }
+        } catch (e: Throwable) {
+            throw e
         }
     }
 }

@@ -11,14 +11,14 @@ open class Task<U: BaseEntity, V: BaseEntity>(
     private val useCase: BaseUseCase<U, V>,
     private val callBack: CallBack<V>?
 ) {
-    private lateinit var error : Exception
+    private lateinit var error : Throwable
 
     fun execute(param: U) : Job {
         var result : V? = null
         val job = GlobalScope.launch(getIODispatcher()) {
             try {
                 result = useCase.execute(param)
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
                 Log.e(e)
                 error = e
             } finally {

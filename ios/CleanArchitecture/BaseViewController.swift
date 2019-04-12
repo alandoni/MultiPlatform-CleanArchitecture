@@ -9,7 +9,7 @@
 import UIKit
 import main
 
-class BaseViewController<T: IPresenter>: UIViewController, IBaseView {
+class BaseViewController<T: BasePresenter>: UIViewController, BaseView {
     func getString(resource: Int32) -> String {
         return ""
     }

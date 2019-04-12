@@ -8,9 +8,6 @@ abstract class BaseApi {
     }
     abstract fun getMethod(): HttpMethod
     protected abstract fun execute(): String?
-    open fun onError(error: Throwable) {
-        throw error
-    }
 }
 
 enum class HttpMethod {
