@@ -1,6 +1,5 @@
 package com.adqmobile.domain.usecases
 
-import com.adqmobile.domain.Throws
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
 import com.adqmobile.data.user.UserLocalRepository

@@ -1,9 +1,8 @@
 package com.adqmobile.domain.repositories
 
 import com.adqmobile.domain.DatabaseException
-import com.adqmobile.domain.Throws
 
-abstract class AbstractDatabase @Throws constructor() {
+abstract class AbstractDatabase {
 
     var error: DatabaseException? = null
 

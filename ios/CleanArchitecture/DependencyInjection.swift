@@ -11,7 +11,7 @@ import main
 
 extension SwinjectStoryboard {
     @objc class func setup() {
-        defaultContainer.register(Database.self) { _ in try! Database().initDatabase() }
+        defaultContainer.register(Database.self) { _ in Database().initDatabase() }
         defaultContainer.register(LoginPresenter.self) { r in
             LoginPresenter(loginUseCase: r.resolve(LoginUseCase.self)!)
         }
