@@ -9,17 +9,13 @@
 import UIKit
 import main
 
-class LoginPresenter: BasePresenter, CallBack {
+class LoginPresenter: NSObject, BasePresenter, CallBack {
     
     var view: LoginView?
     let useCase: LoginUseCase
     
     init(useCase: LoginUseCase) {
         self.useCase = useCase
-    }
-    
-    func onCancel() {
-        
     }
     
     func attach(view: BaseView) {
@@ -32,11 +28,16 @@ class LoginPresenter: BasePresenter, CallBack {
             .attemptLogin(email: view?.getEmail(), password: view?.getPassword())
     }
     
+    func onCancel() {
+        
+    }
+    
     func onFinish(result: Any?) {
         view?.hideProgress()
     }
     
     func onError(error_ error: String) {
+        view?.hideProgress()
         view?.onFail(error: error)
     }
 }

@@ -1,7 +1,7 @@
-package com.adqmobile.presentation
+package com.adqmobile.controllers
 
-import com.adqmobile.presentation.task.CallBack
-import com.adqmobile.presentation.task.Task
+import com.adqmobile.controllers.task.CallBack
+import com.adqmobile.controllers.task.Task
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
 import com.adqmobile.domain.usecases.LoginUseCase

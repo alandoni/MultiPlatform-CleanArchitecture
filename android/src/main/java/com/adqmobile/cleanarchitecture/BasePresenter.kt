@@ -1,4 +1,4 @@
-package com.adqmobile.presentation
+package com.adqmobile.controllers
 
 interface BasePresenter {
     fun attach(view: BaseView)

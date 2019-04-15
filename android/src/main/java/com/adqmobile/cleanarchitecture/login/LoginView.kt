@@ -1,4 +1,4 @@
-package com.adqmobile.presentation
+package com.adqmobile.controllers
 
 interface LoginView : BaseView {
     fun getEmail() : String

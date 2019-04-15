@@ -10,8 +10,8 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.adqmobile.cleanarchitecture.BaseActivity
 import com.adqmobile.cleanarchitecture.R
-import com.adqmobile.presentation.LoginView
-import com.adqmobile.presentation.LoginController
+import com.adqmobile.controllers.LoginView
+import com.adqmobile.controllers.LoginController
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
 
@@ -19,9 +19,9 @@ import org.koin.android.ext.android.inject
 /**
  * A login screen that offers login via email/password.
  */
-class LoginActivity : BaseActivity<LoginController>(), LoginView {
+class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
 
-    override val presenter: LoginController by inject()
+    override val presenter: LoginPresenter by inject()
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -33,14 +33,14 @@ class LoginActivity : BaseActivity<LoginController>(), LoginView {
         // Set up the login form.
         password.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
             if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                this.presenter.attemptLogin()
+                this.presenter.onClickLoginButton()
                 return@OnEditorActionListener true
             }
             false
         })
 
         signInButton.setOnClickListener {
-            this.presenter.attemptLogin()
+            this.presenter.onClickLoginButton()
         }
     }
 

@@ -16,8 +16,11 @@
 		07A61FD922403ACE008FD7D5 /* CleanArchitectureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FD822403ACE008FD7D5 /* CleanArchitectureTests.swift */; };
 		07A61FE422403ACE008FD7D5 /* CleanArchitectureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A61FE322403ACE008FD7D5 /* CleanArchitectureUITests.swift */; };
 		B52AA8F85DECBE6838B0A9AA /* Pods_CleanArchitectureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */; };
+		C106CF472264A8EE00CBA1BE /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C106CF462264A8EE00CBA1BE /* BaseView.swift */; };
+		C106CF492264A93C00CBA1BE /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C106CF482264A93C00CBA1BE /* BasePresenter.swift */; };
 		C141B9E222610E2B003EF937 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B9E122610E2B003EF937 /* BaseViewController.swift */; };
 		C141B9E422611AAE003EF937 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B9E322611AAE003EF937 /* LoginPresenter.swift */; };
+		C141B9E62264A7F5003EF937 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B9E52264A7F5003EF937 /* LoginView.swift */; };
 		C16BE4C4225E66CB004B7961 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16BE4C3225E66CB004B7961 /* Request.swift */; };
 		C16BE4C6225E6A72004B7961 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16BE4C5225E6A72004B7961 /* Database.swift */; };
 		C1C3FCED2243D054004BFB29 /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C3FCE72243D021004BFB29 /* main.framework */; };
@@ -78,8 +81,13 @@
 		B4BC6FE0EA7E18258D2FE147 /* Pods-CleanArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitecture.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture.release.xcconfig"; sourceTree = "<group>"; };
 		B70A8C2645A4386FF79262F5 /* Pods_CleanArchitectureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C106CF462264A8EE00CBA1BE /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		C106CF482264A93C00CBA1BE /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		C141B9E122610E2B003EF937 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = ../../../../../.Trash/BaseViewController.swift; sourceTree = "<group>"; };
 		C141B9E322611AAE003EF937 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		C141B9E52264A7F5003EF937 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C141B9E82264A872003EF937 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C141B9E92264A879003EF937 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = ../../../../../../.Trash/BaseViewController.swift; sourceTree = "<group>"; };
 		C16BE4C3225E66CB004B7961 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		C16BE4C5225E6A72004B7961 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		C1C3FCE52243CAEB004BFB29 /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../domain/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
@@ -124,6 +132,7 @@
 			children = (
 				07A61FC522403ACC008FD7D5 /* LoginViewController.swift */,
 				C141B9E322611AAE003EF937 /* LoginPresenter.swift */,
+				C141B9E52264A7F5003EF937 /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -155,6 +164,7 @@
 		07A61FC222403ACC008FD7D5 /* CleanArchitecture */ = {
 			isa = PBXGroup;
 			children = (
+				C141B9E72264A866003EF937 /* Base */,
 				C1C3FCF12243D323004BFB29 /* Data */,
 				071552F5224052BB000298EC /* Login */,
 				07A61FC322403ACC008FD7D5 /* AppDelegate.swift */,
@@ -208,6 +218,17 @@
 				C0C92BC73261AA65F08B2747 /* Pods_CleanArchitectureUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C141B9E72264A866003EF937 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C141B9E92264A879003EF937 /* BaseViewController.swift */,
+				C141B9E82264A872003EF937 /* BaseViewController.swift */,
+				C106CF462264A8EE00CBA1BE /* BaseView.swift */,
+				C106CF482264A93C00CBA1BE /* BasePresenter.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		C1C3FCF12243D323004BFB29 /* Data */ = {
@@ -471,11 +492,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C16BE4C6225E6A72004B7961 /* Database.swift in Sources */,
+				C106CF492264A93C00CBA1BE /* BasePresenter.swift in Sources */,
 				07A61FC622403ACC008FD7D5 /* LoginViewController.swift in Sources */,
 				C141B9E422611AAE003EF937 /* LoginPresenter.swift in Sources */,
 				0728E68C225FDB05006D3E92 /* DependencyInjection.swift in Sources */,
 				07A61FC422403ACC008FD7D5 /* AppDelegate.swift in Sources */,
 				C16BE4C4225E66CB004B7961 /* Request.swift in Sources */,
+				C106CF472264A8EE00CBA1BE /* BaseView.swift in Sources */,
+				C141B9E62264A7F5003EF937 /* LoginView.swift in Sources */,
 				C141B9E222610E2B003EF937 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
