@@ -1,4 +1,4 @@
-package com.adqmobile.domain.repositories
+package com.adqmobile.data.base
 
 abstract class BaseApi {
     abstract fun getUrl(): String

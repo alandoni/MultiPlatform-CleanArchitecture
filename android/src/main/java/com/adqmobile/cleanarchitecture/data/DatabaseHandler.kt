@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.adqmobile.domain.repositories.DatabaseInitializer
+import com.adqmobile.data.base.DatabaseInitializer
 
 class DatabaseHandler constructor(
     context: Context,
