@@ -22,7 +22,7 @@ import org.koin.core.parameter.parametersOf
  */
 class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
 
-    override val presenter: LoginPresenter by inject { parametersOf(this) }
+    override val presenter: LoginPresenter by inject()
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.

@@ -2,9 +2,9 @@ package com.adqmobile.domain.usecases
 
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
-import com.adqmobile.data.user.UserLocalRepository
-import com.adqmobile.data.user.UserRemoteRepository
 import com.adqmobile.domain.ValidationException
+import com.adqmobile.domain.repositories.UserLocalRepository
+import com.adqmobile.domain.repositories.user.UserRemoteRepository
 
 class LoginUseCase constructor(
     private val localRepository: UserLocalRepository,
@@ -16,7 +16,7 @@ class LoginUseCase constructor(
     }
 
     private fun isEmailValid(email: String): Boolean {
-        for (i in 0..email.length) {
+        for (i in 0..email.length - 1) {
             if (email[i] == '@') {
                 return true
             }
