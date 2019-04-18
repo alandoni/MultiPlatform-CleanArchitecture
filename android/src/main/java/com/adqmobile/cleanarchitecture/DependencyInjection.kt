@@ -6,7 +6,7 @@ import com.adqmobile.data.base.AbstractDatabase
 import com.adqmobile.data.base.BaseRequest
 import com.adqmobile.data.user.UserLocalRepositoryImpl
 import com.adqmobile.data.user.UserRemoteRepositoryImpl
-import com.adqmobile.domain.repositories.UserLocalRepository
+import com.adqmobile.domain.repositories.user.UserLocalRepository
 import com.adqmobile.domain.repositories.user.UserRemoteRepository
 import com.adqmobile.domain.usecases.LoginUseCase
 import com.adqmobile.presentation.LoginPresenter

@@ -1,6 +1,7 @@
-package com.adqmobile.domain.repositories
+package com.adqmobile.domain.repositories.user
 
 import com.adqmobile.domain.entities.UserEntity
+import com.adqmobile.domain.repositories.BaseLocalRepository
 
 interface UserLocalRepository: BaseLocalRepository {
     fun selectAll(): List<UserEntity>?

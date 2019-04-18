@@ -3,7 +3,7 @@ package com.adqmobile.domain.usecases
 import com.adqmobile.domain.entities.LoginRequestEntity
 import com.adqmobile.domain.entities.LoginResponseEntity
 import com.adqmobile.domain.ValidationException
-import com.adqmobile.domain.repositories.UserLocalRepository
+import com.adqmobile.domain.repositories.user.UserLocalRepository
 import com.adqmobile.domain.repositories.user.UserRemoteRepository
 
 class LoginUseCase constructor(

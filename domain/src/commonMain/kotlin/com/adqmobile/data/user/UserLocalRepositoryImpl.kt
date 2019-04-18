@@ -2,7 +2,7 @@ package com.adqmobile.data.user
 
 import com.adqmobile.domain.entities.UserEntity
 import com.adqmobile.data.base.AbstractDatabase
-import com.adqmobile.domain.repositories.UserLocalRepository
+import com.adqmobile.domain.repositories.user.UserLocalRepository
 
 class UserLocalRepositoryImpl(private val database: AbstractDatabase): UserLocalRepository {
     override fun createTableQuery(): String {
