@@ -1,7 +1,7 @@
 package com.adqmobile.data.user
 
 import com.adqmobile.domain.entities.UserEntity
-import com.adqmobile.domain.repositories.AbstractDatabase
+import com.adqmobile.data.base.AbstractDatabase
 import com.adqmobile.domain.repositories.BaseLocalRepository
 
 class UserLocalRepository(private val database: AbstractDatabase): BaseLocalRepository {

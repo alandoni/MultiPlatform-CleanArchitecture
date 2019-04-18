@@ -1,7 +1,7 @@
 package com.adqmobile.cleanarchitecture.data
 
-import com.adqmobile.domain.repositories.BaseApi
-import com.adqmobile.domain.repositories.BaseRequest
+import com.adqmobile.data.base.BaseApi
+import com.adqmobile.data.base.BaseRequest
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
