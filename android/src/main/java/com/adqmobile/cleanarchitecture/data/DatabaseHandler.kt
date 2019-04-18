@@ -8,12 +8,12 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.adqmobile.domain.repositories.DatabaseInitializer
+import com.adqmobile.data.base.DatabaseInitializer
 
 class DatabaseHandler constructor(
     context: Context,
     private val databaseInitializer: DatabaseInitializer
-): SQLiteOpenHelper(context, DatabaseHandler.DB_NAME, null, DatabaseHandler.DB_VERSION) {
+): SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
         val queries = databaseInitializer.onCreate()

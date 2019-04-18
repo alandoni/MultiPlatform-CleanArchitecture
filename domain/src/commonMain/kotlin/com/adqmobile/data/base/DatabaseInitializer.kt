@@ -1,11 +1,11 @@
-package com.adqmobile.domain.repositories
+package com.adqmobile.data.base
 
-import com.adqmobile.data.user.UserLocalRepository
+import com.adqmobile.data.user.UserLocalRepositoryImpl
 
 class DatabaseInitializer(private val database: AbstractDatabase) {
 
     fun onCreate(): Array<String> {
-        return arrayOf(UserLocalRepository(database).createTableQuery())
+        return arrayOf(UserLocalRepositoryImpl(database).createTableQuery())
     }
 
     fun onUpgrade(oldVersion: Int, newVersion: Int): Array<String>? {

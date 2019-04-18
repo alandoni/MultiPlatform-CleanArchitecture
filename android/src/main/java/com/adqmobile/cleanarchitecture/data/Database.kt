@@ -1,10 +1,10 @@
 package com.adqmobile.cleanarchitecture.data
 
 import android.content.Context
-import com.adqmobile.domain.repositories.AbstractDatabase
-import com.adqmobile.domain.repositories.DatabaseInitializer
+import com.adqmobile.data.base.AbstractDatabase
+import com.adqmobile.data.base.DatabaseInitializer
 
-class Database constructor(context: Context) : AbstractDatabase() {
+class Database(context: Context) : AbstractDatabase() {
 
     private val db: DatabaseHandler = DatabaseHandler(context, DatabaseInitializer(this))
 
